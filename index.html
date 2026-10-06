@@ -23,12 +23,12 @@
 <style>
   /* ── Themes ───────────────────────────────────────────── */
   :root[data-theme="dark"]{
-    --bg:#070b14; --bg-elev:#0c1220; --bg-soft:#0a101c;
-    --text:#eef2f8; --muted:#a3b2c7; --faint:#71809a;
-    --line:rgba(160,180,210,.16); --line-strong:rgba(160,180,210,.34);
-    --accent:#34d399; --accent-2:#22d3ee; --accent-ink:#03231a; --accent-soft:rgba(52,211,153,.14);
-    --grad-ink:#032018; --chip:#111a2b;
-    --glow-a:rgba(52,211,153,.17); --glow-b:rgba(34,211,238,.14);
+    --bg:#0a101e; --bg-elev:#0f1728; --bg-soft:#0d1424;
+    --text:#f2f6fc; --muted:#b3c1d6; --faint:#7e8ea8;
+    --line:rgba(170,190,220,.17); --line-strong:rgba(170,190,220,.36);
+    --accent:#34d399; --accent-2:#22d3ee; --accent-ink:#03231a; --accent-soft:rgba(52,211,153,.15);
+    --grad-ink:#032018; --chip:#121c30;
+    --glow-a:rgba(52,211,153,.28); --glow-b:rgba(34,211,238,.24);
   }
   :root[data-theme="light"]{
     --bg:#f6f9fc; --bg-elev:#ffffff; --bg-soft:#eef4f9;
@@ -36,7 +36,7 @@
     --line:rgba(15,23,42,.14); --line-strong:rgba(15,23,42,.3);
     --accent:#059669; --accent-2:#0891b2; --accent-ink:#ffffff; --accent-soft:rgba(5,150,105,.1);
     --grad-ink:#ffffff; --chip:#e8eef6;
-    --glow-a:rgba(52,211,153,.22); --glow-b:rgba(34,211,238,.18);
+    --glow-a:rgba(52,211,153,.3); --glow-b:rgba(34,211,238,.24);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -72,6 +72,22 @@
   .pull::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;
     background:linear-gradient(180deg,var(--accent),var(--accent-2))}
   #surface,#method{background:var(--bg-soft)}
+
+  /* brighter details */
+  .eyebrow i{color:var(--accent-2);opacity:.72}
+  .runline .seq span{color:var(--muted)}
+  .linkrow a{border-bottom-color:color-mix(in srgb,var(--accent) 55%,transparent)}
+  .nav a:hover{color:var(--accent-2);border-bottom-color:color-mix(in srgb,var(--accent-2) 55%,transparent)}
+  .dos-foot{color:var(--muted)}
+  .hint{color:var(--muted)}
+  .dossier{border:1px solid transparent;
+    background:linear-gradient(var(--bg-elev),var(--bg-elev)) padding-box,
+               linear-gradient(135deg,color-mix(in srgb,var(--accent) 55%,transparent),color-mix(in srgb,var(--accent-2) 55%,transparent)) border-box}
+  .case{border:1px solid transparent;
+    background:linear-gradient(var(--bg-elev),var(--bg-elev)) padding-box,
+               linear-gradient(160deg,color-mix(in srgb,var(--accent) 50%,transparent),color-mix(in srgb,var(--accent-2) 50%,transparent)) border-box}
+  .note{border-color:color-mix(in srgb,var(--line-strong) 80%,transparent)}
+  .note:hover{border-color:color-mix(in srgb,var(--accent) 70%,transparent)}
 
   /* ── Masthead ─────────────────────────────────────────── */
   .masthead{position:sticky;top:0;z-index:60;

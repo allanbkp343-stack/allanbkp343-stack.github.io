@@ -13,10 +13,10 @@
       <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
     </radialGradient>
   </defs>
-  <rect width="1200" height="630" fill="#070b14"/>
+  <rect width="1200" height="630" fill="#0a101e"/>
   <rect width="1200" height="630" fill="url(#glowA)"/>
   <rect width="1200" height="630" fill="url(#glowB)"/>
-  <rect x="60" y="60" width="1080" height="510" rx="8" fill="none" stroke="#1a2740" stroke-width="1.5"/>
+  <rect x="60" y="60" width="1080" height="510" rx="8" fill="none" stroke="#233350" stroke-width="1.5"/>
   <line x1="120" y1="196" x2="308" y2="196" stroke="url(#g1)" stroke-width="3"/>
   <text x="120" y="188" font-family="DejaVu Sans,Helvetica,Arial,sans-serif" font-size="21" letter-spacing="6" fill="#34d399">CYBERSECURITY ENGINEER</text>
   <text x="118" y="308" font-family="DejaVu Serif,Georgia,serif" font-size="72" fill="#eef2f8">Allan Kimani Wanjiku</text>

@@ -1073,13 +1073,14 @@
         if (en.isIntersecting && !counted){
           counted = true;
           stats.querySelectorAll("b").forEach(function(b){
-            var target = parseInt(b.textContent.replace(/[^0-9]/g, ""), 10) || 0;
+            var orig = b.textContent.trim();
+            var target = parseInt(orig.replace(/[^0-9]/g, ""), 10) || 0;
             var t0 = null;
             function step(ts){
               if (!t0) t0 = ts;
               var p = Math.min((ts - t0) / 900, 1);
               b.textContent = String(Math.round(target * (1 - Math.pow(1 - p, 3))));
-              if (p < 1) requestAnimationFrame(step);
+              if (p < 1) requestAnimationFrame(step); else b.textContent = orig;
             }
             b.textContent = "0";
             requestAnimationFrame(step);

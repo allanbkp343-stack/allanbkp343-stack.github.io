@@ -1,10 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
-  <rect width="1200" height="630" fill="#0c0e12"/>
-  <rect x="60" y="60" width="1080" height="510" rx="6" fill="none" stroke="#2a2f38" stroke-width="1.5"/>
-  <line x1="120" y1="196" x2="292" y2="196" stroke="#8fd0ae" stroke-width="3"/>
-  <text x="120" y="188" font-family="DejaVu Sans,Helvetica,Arial,sans-serif" font-size="21" letter-spacing="6" fill="#8fd0ae">CYBERSECURITY ENGINEER</text>
-  <text x="118" y="308" font-family="DejaVu Serif,Georgia,serif" font-size="72" fill="#e9e6df">Allan Kimani Wanjiku</text>
-  <text x="120" y="384" font-family="DejaVu Serif,Georgia,serif" font-style="italic" font-size="30" fill="#9aa2ad">I find weaknesses before adversaries do —</text>
-  <text x="120" y="426" font-family="DejaVu Serif,Georgia,serif" font-style="italic" font-size="30" fill="#9aa2ad">and build the systems that make it repeatable.</text>
-  <text x="120" y="516" font-family="DejaVu Sans Mono,Courier,monospace" font-size="20" fill="#6f7782">allanbkp343-stack.github.io · offensive security · purple team · automation</text>
+  <defs>
+    <linearGradient id="g1" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#34d399"/>
+      <stop offset="1" stop-color="#22d3ee"/>
+    </linearGradient>
+    <radialGradient id="glowA" cx="0.1" cy="0" r="0.7">
+      <stop offset="0" stop-color="#34d399" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#34d399" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="0.95" cy="0.05" r="0.6">
+      <stop offset="0" stop-color="#22d3ee" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#22d3ee" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#070b14"/>
+  <rect width="1200" height="630" fill="url(#glowA)"/>
+  <rect width="1200" height="630" fill="url(#glowB)"/>
+  <rect x="60" y="60" width="1080" height="510" rx="8" fill="none" stroke="#1a2740" stroke-width="1.5"/>
+  <line x1="120" y1="196" x2="308" y2="196" stroke="url(#g1)" stroke-width="3"/>
+  <text x="120" y="188" font-family="DejaVu Sans,Helvetica,Arial,sans-serif" font-size="21" letter-spacing="6" fill="#34d399">CYBERSECURITY ENGINEER</text>
+  <text x="118" y="308" font-family="DejaVu Serif,Georgia,serif" font-size="72" fill="#eef2f8">Allan Kimani Wanjiku</text>
+  <text x="120" y="384" font-family="DejaVu Serif,Georgia,serif" font-style="italic" font-size="30" fill="#a3b2c7">I find weaknesses before adversaries do —</text>
+  <text x="120" y="426" font-family="DejaVu Serif,Georgia,serif" font-style="italic" font-size="30" fill="#a3b2c7">and build the systems that make it repeatable.</text>
+  <text x="120" y="516" font-family="DejaVu Sans Mono,Courier,monospace" font-size="20" fill="#71809a">allanbkp343-stack.github.io · offensive security · purple team · automation</text>
 </svg>

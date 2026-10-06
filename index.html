@@ -19,9 +19,10 @@
 <meta name="twitter:image" content="https://allanbkp343-stack.github.io/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,420;0,9..144,520;1,9..144,360&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   /* ── Themes ───────────────────────────────────────────── */
+  :root{--display:"Space Grotesk",Inter,system-ui,-apple-system,sans-serif}
   :root[data-theme="dark"]{
     --bg:#0a101e; --bg-elev:#0f1728; --bg-soft:#0d1424;
     --text:#f2f6fc; --muted:#b3c1d6; --faint:#7e8ea8;
@@ -54,7 +55,7 @@
     box-shadow:0 0 14px color-mix(in srgb,var(--accent) 65%,transparent)}
 
   /* gradient text utilities + shimmer */
-  .sec-kicker span,.eyebrow>span:first-child,.stat b,.rotate,.grad{
+  .sec-kicker span,.eyebrow>span:first-child,.stat b,.grad{
     background:linear-gradient(92deg,var(--accent),var(--accent-2),var(--accent));
     background-size:200% 100%;
     -webkit-background-clip:text;background-clip:text;color:transparent;
@@ -110,7 +111,7 @@
     backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
   .mast-inner{max-width:1100px;margin:0 auto;padding:12px 30px;
     display:flex;align-items:center;justify-content:space-between;gap:20px}
-  .mark{font-family:"Fraunces",Georgia,serif;font-size:1.02rem;white-space:nowrap}
+  .mark{font-family:var(--display);font-size:1.02rem;white-space:nowrap}
   .mark b{font-weight:520}
   .mark span{color:var(--accent)}
   .nav{display:flex;gap:24px;align-items:center;font-size:.85rem;color:var(--muted)}
@@ -153,12 +154,18 @@
   .eyebrow{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.7rem;
     letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:flex;gap:22px;flex-wrap:wrap}
   .eyebrow i{font-style:normal;color:var(--faint)}
-  h1{font-family:"Fraunces",Georgia,serif;font-weight:420;letter-spacing:-.015em;
-    font-size:clamp(2.3rem,5vw,3.5rem);line-height:1.1;margin-bottom:22px}
-  .lede{font-family:"Fraunces",Georgia,serif;font-size:clamp(1.1rem,1.9vw,1.28rem);
-    line-height:1.62;max-width:46ch}
-  .rotate-wrap{display:inline-block;position:relative;color:var(--accent);font-style:italic}
-  .rotate{transition:opacity .22s ease;display:inline-block}
+  h1{font-family:var(--display);font-weight:700;letter-spacing:-.03em;
+    font-size:clamp(2.4rem,5.4vw,3.7rem);line-height:1.04;margin-bottom:10px}
+  .typed-row{display:flex;align-items:center;gap:10px;font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:clamp(.95rem,1.7vw,1.12rem);margin:4px 0 20px;min-height:1.6em}
+  .typed-row .prompt{color:var(--accent);font-weight:500}
+  .typed{background:linear-gradient(92deg,var(--accent),var(--accent-2));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .caret{display:inline-block;width:9px;height:1.15em;background:var(--accent);border-radius:1px;
+    animation:blink 1.05s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .statement{font-family:var(--display);font-weight:500;font-size:clamp(1.22rem,2.2vw,1.5rem);
+    line-height:1.5;max-width:42ch;margin-bottom:20px}
   .sub{color:var(--muted);max-width:58ch;margin-top:22px;font-size:.99rem}
   .meta-row{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:26px;font-size:.84rem;color:var(--faint)}
   .meta-row b{color:var(--muted);font-weight:500}
@@ -200,9 +207,9 @@
   .runline .seq span{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.7rem;
     letter-spacing:.24em;text-transform:uppercase;color:var(--faint);margin:0 18px}
   .runline .seq b{color:var(--accent);font-weight:400;margin:0 18px;font-size:.72rem}
-  .runline.quote .seq span{font-family:"Fraunces",Georgia,serif;font-style:italic;text-transform:none;
+  .runline.quote .seq span{font-family:var(--display);font-style:italic;text-transform:none;
     letter-spacing:.015em;font-size:1.02rem;color:var(--muted);margin:0 16px}
-  .runline.quote .seq b{font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:360;
+  .runline.quote .seq b{font-family:var(--display);font-style:italic;font-weight:360;
     color:var(--accent);margin:0 14px;font-size:1.05rem}
   @keyframes run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
@@ -212,15 +219,15 @@
   .sec-kicker{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.68rem;letter-spacing:.22em;
     text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;gap:16px;align-items:baseline}
   .sec-kicker i{font-style:normal;color:var(--faint)}
-  h2{font-family:"Fraunces",Georgia,serif;font-weight:420;letter-spacing:-.012em;
+  h2{font-family:var(--display);font-weight:420;letter-spacing:-.012em;
     font-size:clamp(1.55rem,2.9vw,2.1rem);line-height:1.26;margin-bottom:14px}
   .sec-sub{color:var(--muted);max-width:64ch;font-size:.99rem}
   .prose{max-width:66ch}
   .prose p{margin-bottom:1.1em}
   .prose p.dim{color:var(--muted)}
-  .prose .dropcap::first-letter{font-family:"Fraunces",Georgia,serif;font-weight:420;font-size:3.1em;
+  .prose .dropcap::first-letter{font-family:var(--display);font-weight:420;font-size:3.1em;
     float:left;line-height:.8;padding:7px 13px 0 0;color:var(--accent)}
-  .pull{font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:360;
+  .pull{font-family:var(--display);font-style:italic;font-weight:360;
     font-size:clamp(1.2rem,2.2vw,1.5rem);line-height:1.5;border-left:2px solid var(--accent);
     padding:6px 0 6px 24px;margin:30px 0;max-width:50ch}
 
@@ -236,7 +243,7 @@
     overflow:hidden;box-shadow:0 30px 70px -50px rgba(0,0,0,.75)}
   .case-top{padding:30px 32px 24px;border-bottom:1px solid var(--line);background:var(--bg-soft)}
   .case-top .labels{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
-  .case-top h3{font-family:"Fraunces",Georgia,serif;font-weight:480;font-size:1.5rem;letter-spacing:-.01em;margin-bottom:10px}
+  .case-top h3{font-family:var(--display);font-weight:480;font-size:1.5rem;letter-spacing:-.01em;margin-bottom:10px}
   .case-top p{color:var(--muted);max-width:70ch}
   .case-body{padding:28px 32px 30px}
   .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
@@ -294,7 +301,7 @@
     box-shadow:0 8px 24px -14px color-mix(in srgb,var(--accent) 70%,transparent)}
   .panel{display:none;border:1px solid var(--line);border-radius:14px;padding:24px 26px;background:var(--bg-elev)}
   .panel.active{display:grid;grid-template-columns:1.2fr .8fr;gap:26px}
-  .panel h3{font-family:"Fraunces",Georgia,serif;font-weight:480;font-size:1.18rem;margin-bottom:8px}
+  .panel h3{font-family:var(--display);font-weight:480;font-size:1.18rem;margin-bottom:8px}
   .panel p{color:var(--muted);font-size:.94rem}
   .panel .side{align-self:start}
   .panel .side .lbl{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.6rem;letter-spacing:.16em;
@@ -307,7 +314,7 @@
     transition:transform .18s ease,border-color .18s ease;display:flex;flex-direction:column}
   .note:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
   .note .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:12px}
-  .note h3{font-family:"Fraunces",Georgia,serif;font-weight:480;font-size:1.16rem}
+  .note h3{font-family:var(--display);font-weight:480;font-size:1.16rem}
   .note .kind{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.6rem;letter-spacing:.14em;color:var(--faint);white-space:nowrap}
   .note .line{color:var(--muted);font-size:.9rem;margin-bottom:14px}
   .note .demo{border-top:1px solid var(--line);padding-top:12px;margin-top:auto;font-size:.84rem}
@@ -326,7 +333,7 @@
   .phase.active{color:var(--grad-ink);background:linear-gradient(135deg,var(--accent),var(--accent-2));border-color:transparent;font-weight:500;
     box-shadow:0 8px 24px -14px color-mix(in srgb,var(--accent) 70%,transparent)}
   .phase-panel{border:1px solid var(--line);border-radius:14px;padding:24px 26px;background:var(--bg-elev);min-height:150px}
-  .phase-panel h3{font-family:"Fraunces",Georgia,serif;font-weight:480;font-size:1.18rem;margin-bottom:8px}
+  .phase-panel h3{font-family:var(--display);font-weight:480;font-size:1.18rem;margin-bottom:8px}
   .phase-panel p{color:var(--muted);max-width:62ch}
   .phase-panel .out{margin-top:14px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.72rem;color:var(--accent)}
   .flowline{margin-top:18px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.72rem;
@@ -338,7 +345,7 @@
   .stats{border-top:1px solid var(--line-strong)}
   .stat{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:13px 0;
     border-bottom:1px solid var(--line)}
-  .stat b{font-family:"Fraunces",Georgia,serif;font-size:1.35rem;font-weight:420;color:var(--accent)}
+  .stat b{font-family:var(--display);font-size:1.35rem;font-weight:420;color:var(--accent)}
   .stat span{color:var(--muted);font-size:.83rem;text-align:right}
 
   /* contact */
@@ -397,6 +404,25 @@
     .runline .seq{display:inline-flex;flex-wrap:wrap;justify-content:center}
     .runline .seq + .seq{display:none}
   }
+
+  /* ── NEMESIS chapter — its own colour & rhythm ────────── */
+  #work .sec-kicker i.v{color:#a78bfa}
+  #work .case{border:1px solid transparent;
+    background:linear-gradient(var(--bg-elev),var(--bg-elev)) padding-box,
+               linear-gradient(160deg,rgba(167,139,250,.6),rgba(232,121,249,.55)) border-box;
+    box-shadow:0 30px 90px -55px rgba(167,139,250,.5),0 30px 70px -50px rgba(0,0,0,.75)}
+  #work .case .case-top{background:radial-gradient(560px 230px at 6% 0%, rgba(167,139,250,.18), transparent 66%), var(--bg-soft)}
+  .brandn{background:linear-gradient(92deg,#a78bfa,#e879f9,#a78bfa);background-size:200% 100%;
+    -webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 7s linear infinite}
+  #work .case .labels .chip:first-child{color:#c4b5fd;border-color:rgba(167,139,250,.5);background:rgba(167,139,250,.13)}
+  #work .case .dropcap::first-letter{color:#a78bfa}
+  #work .case .pull::before{background:linear-gradient(180deg,#a78bfa,#e879f9)}
+  #work .case .chain .arrow{color:#a78bfa}
+  #work .case .chain .node:hover{border-color:#a78bfa;box-shadow:0 0 22px -6px rgba(167,139,250,.8)}
+  #work .case .cell b{color:#a78bfa}
+  #work .case .more-btn{background:linear-gradient(135deg,#a78bfa,#e879f9);color:#1b0b30;
+    box-shadow:0 12px 34px -16px rgba(167,139,250,.85)}
+  #work .case .more-btn:hover{box-shadow:0 16px 40px -14px rgba(232,121,249,.85)}
 </style>
 </head>
 <body>
@@ -436,10 +462,12 @@
         <span><i>·</i> KENYA <i>·</i> UTC+03:00</span>
         <span><i>·</i> AUTHORIZED WORK ONLY</span>
       </div>
-      <h1>I break things on purpose, prove the path, and build the systems that <span class="grad">remember</span>.</h1>
-      <p class="lede">
-        Most of my work sits where <span class="rotate-wrap"><span class="rotate" id="rotate">offensive security</span></span> meets engineering.
-      </p>
+      <h1>Allan Kimani Wanjiku</h1>
+      <div class="typed-row" aria-label="Roles">
+        <span class="prompt">&gt;</span>
+        <span class="typed" id="typed"></span><span class="caret" aria-hidden="true"></span>
+      </div>
+      <p class="statement">I break things on purpose, prove the path, and build the systems that <span class="grad">remember</span>.</p>
       <p class="sub">
         Authorized penetration testing across web, Active Directory, and cloud. Purple-team exercises that
         test detection as much as exploitation. And tooling that turns every engagement into knowledge
@@ -487,7 +515,7 @@
 <section id="work">
   <div class="wrap">
     <div class="sec-head reveal">
-      <div class="sec-kicker"><span>01 — SELECTED WORK</span><i>// CASE 001</i></div>
+      <div class="sec-kicker"><span>01 — SELECTED WORK</span><i class="v">// CASE 001</i></div>
       <h2>A platform that runs assessments the way I would.</h2>
     </div>
 
@@ -498,7 +526,7 @@
           <span class="chip mut">STATUS · ACTIVE</span>
           <span class="chip mut">SANITIZED RESULTS</span>
         </div>
-        <h3>NEMESIS — Autonomous Purple Team Platform</h3>
+        <h3><span class="brandn">NEMESIS</span> — Autonomous Purple Team Platform</h3>
         <p>
           Multi-agent orchestration across the full assessment lifecycle: reconnaissance, exploitation,
           escalation, and reporting — under human checkpoints, with evidence that survives scrutiny.
@@ -880,16 +908,24 @@
     prog.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + "%";
   }, {passive:true});
 
-  /* rotating word */
-  var words = ["offensive security", "purple team", "security automation"];
-  var rot = document.getElementById("rotate");
-  if (!rm){
-    var ri = 0;
-    setInterval(function(){
-      ri = (ri + 1) % words.length;
-      rot.style.opacity = "0";
-      setTimeout(function(){ rot.textContent = words[ri]; rot.style.opacity = "1"; }, 240);
-    }, 2800);
+  /* typed roles */
+  var roles = ["offensive security engineer", "purple team operator", "security automation builder", "adversary simulation specialist"];
+  var typedEl = document.getElementById("typed");
+  if (typedEl){
+    if (rm){
+      typedEl.textContent = roles[0];
+    } else {
+      var wi = 0, ci = 0, deleting = false;
+      (function type(){
+        var word = roles[wi];
+        ci += deleting ? -1 : 1;
+        typedEl.textContent = word.slice(0, ci);
+        var delay = deleting ? 32 : 58;
+        if (!deleting && ci === word.length){ deleting = true; delay = 1700; }
+        else if (deleting && ci === 0){ deleting = false; wi = (wi + 1) % roles.length; delay = 420; }
+        setTimeout(type, delay);
+      })();
+    }
   }
 
   /* reveal */

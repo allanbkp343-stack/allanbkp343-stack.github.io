@@ -50,12 +50,16 @@
   .wrap{max-width:1100px;margin:0 auto;padding:0 30px}
   .mono{font-family:"JetBrains Mono",ui-monospace,monospace}
 
-  #progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));z-index:90;opacity:.9}
+  #progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));z-index:90;opacity:.9;
+    box-shadow:0 0 14px color-mix(in srgb,var(--accent) 65%,transparent)}
 
-  /* gradient text utilities */
-  .sec-kicker span,.eyebrow>span:first-child,.stat b,.rotate{
-    background:linear-gradient(92deg,var(--accent),var(--accent-2));
-    -webkit-background-clip:text;background-clip:text;color:transparent}
+  /* gradient text utilities + shimmer */
+  .sec-kicker span,.eyebrow>span:first-child,.stat b,.rotate,.grad{
+    background:linear-gradient(92deg,var(--accent),var(--accent-2),var(--accent));
+    background-size:200% 100%;
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+    animation:shimmer 7s linear infinite}
+  @keyframes shimmer{from{background-position:0% 0}to{background-position:200% 0}}
   .mark span{color:var(--accent-2)}
   ::selection{background:color-mix(in srgb,var(--accent) 28%,transparent)}
 
@@ -89,6 +93,17 @@
   .note{border-color:color-mix(in srgb,var(--line-strong) 80%,transparent)}
   .note:hover{border-color:color-mix(in srgb,var(--accent) 70%,transparent)}
 
+  /* flashy details */
+  .more-btn,.btn{position:relative;overflow:hidden}
+  .more-btn::after,.btn::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;
+    background:linear-gradient(100deg,transparent,rgba(255,255,255,.5),transparent);
+    transform:skewX(-18deg);transition:left .55s ease}
+  .more-btn:hover::after,.btn:hover::after{left:130%}
+  .chain .node{transition:transform .18s ease,border-color .18s ease,box-shadow .18s ease,color .18s ease}
+  .chain .node:hover{border-color:var(--accent);color:var(--text);transform:translateY(-1px);
+    box-shadow:0 0 22px -6px color-mix(in srgb,var(--accent) 75%,transparent)}
+  .case{box-shadow:0 30px 90px -55px color-mix(in srgb,var(--accent) 40%,transparent),0 30px 70px -50px rgba(0,0,0,.75)}
+
   /* ── Masthead ─────────────────────────────────────────── */
   .masthead{position:sticky;top:0;z-index:60;
     background:color-mix(in srgb,var(--bg) 86%,transparent);
@@ -99,8 +114,10 @@
   .mark b{font-weight:520}
   .mark span{color:var(--accent)}
   .nav{display:flex;gap:24px;align-items:center;font-size:.85rem;color:var(--muted)}
-  .nav a{transition:color .15s ease;padding:2px 0;border-bottom:1px solid transparent}
-  .nav a:hover{color:var(--text);border-bottom-color:var(--line-strong)}
+  .nav a{position:relative;transition:color .15s ease;padding:2px 0}
+  .nav a::after{content:"";position:absolute;left:0;bottom:-5px;height:1.5px;width:0;
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));transition:width .22s ease;border-radius:2px}
+  .nav a:hover::after{width:100%}
   .mast-right{display:flex;align-items:center;gap:16px}
   .stat-badge{display:inline-flex;align-items:center;gap:8px}
   .pulse{width:7px;height:7px;border-radius:50%;background:var(--accent);
@@ -117,10 +134,21 @@
   :root[data-theme="light"] .icon-sun{display:none} :root[data-theme="light"] .icon-moon{display:block}
 
   /* ── Hero ─────────────────────────────────────────────── */
-  .hero{padding:78px 0 62px;border-bottom:1px solid var(--line);position:relative}
+  .hero{padding:78px 0 62px;border-bottom:1px solid var(--line);position:relative;overflow:hidden}
   .hero::before{content:"";position:absolute;inset:0;pointer-events:none;z-index:0;
     background:radial-gradient(780px 370px at 10% -12%, var(--glow-a), transparent 66%),
-               radial-gradient(640px 330px at 94% -4%, var(--glow-b), transparent 63%)}
+               radial-gradient(640px 330px at 94% -4%, var(--glow-b), transparent 63%);
+    background-size:160% 160%,150% 150%;
+    animation:aurora 20s ease-in-out infinite alternate}
+  @keyframes aurora{from{background-position:0% 0,100% 0}to{background-position:32% 22%,68% 16%}}
+  .hero::after{content:"";position:absolute;width:420px;height:420px;right:-90px;top:-130px;border-radius:50%;
+    background:radial-gradient(circle,color-mix(in srgb,var(--accent-2) 50%,transparent),transparent 65%);
+    filter:blur(70px);opacity:.35;pointer-events:none;z-index:0;
+    animation:drift 24s ease-in-out infinite alternate}
+  @keyframes drift{from{transform:translate(0,0) scale(1)}to{transform:translate(-90px,70px) scale(1.18)}}
+  .glowspot{position:absolute;width:560px;height:560px;left:calc(var(--mx,60%) - 280px);top:calc(var(--my,20%) - 280px);
+    background:radial-gradient(circle,color-mix(in srgb,var(--accent) 13%,transparent),transparent 62%);
+    filter:blur(46px);pointer-events:none;z-index:0;transition:left .35s ease,top .35s ease}
   .hero-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.45fr .8fr;gap:54px;align-items:start}
   .eyebrow{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.7rem;
     letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:flex;gap:22px;flex-wrap:wrap}
@@ -400,6 +428,7 @@
 <main id="top">
 
 <section class="hero" style="border-bottom:0">
+  <div class="glowspot" aria-hidden="true"></div>
   <div class="wrap hero-inner">
     <div>
       <div class="eyebrow">
@@ -407,7 +436,7 @@
         <span><i>·</i> KENYA <i>·</i> UTC+03:00</span>
         <span><i>·</i> AUTHORIZED WORK ONLY</span>
       </div>
-      <h1>I find weaknesses before adversaries do — and build the systems that make that work repeatable.</h1>
+      <h1>I find weaknesses before adversaries do — and build the systems that make that work <span class="grad">repeatable</span>.</h1>
       <p class="lede">
         Most of my work sits where <span class="rotate-wrap"><span class="rotate" id="rotate">offensive security</span></span> meets engineering.
       </p>
@@ -872,6 +901,44 @@
     els.forEach(function(el){ io.observe(el); });
   } else {
     els.forEach(function(el){ el.classList.add("in"); });
+  }
+
+  /* hero glow follows cursor */
+  var hero = document.querySelector(".hero");
+  var glow = document.querySelector(".glowspot");
+  if (hero && glow && !rm && window.matchMedia("(pointer:fine)").matches){
+    hero.addEventListener("mousemove", function(e){
+      var r = hero.getBoundingClientRect();
+      hero.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      hero.style.setProperty("--my", (e.clientY - r.top) + "px");
+    }, {passive:true});
+  }
+
+  /* animated stat counters */
+  var stats = document.querySelector(".stats");
+  if (stats && !rm && "IntersectionObserver" in window){
+    var counted = false;
+    var io2 = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (en.isIntersecting && !counted){
+          counted = true;
+          stats.querySelectorAll("b").forEach(function(b){
+            var target = parseInt(b.textContent.replace(/[^0-9]/g, ""), 10) || 0;
+            var t0 = null;
+            function step(ts){
+              if (!t0) t0 = ts;
+              var p = Math.min((ts - t0) / 900, 1);
+              b.textContent = String(Math.round(target * (1 - Math.pow(1 - p, 3))));
+              if (p < 1) requestAnimationFrame(step);
+            }
+            b.textContent = "0";
+            requestAnimationFrame(step);
+          });
+          io2.disconnect();
+        }
+      });
+    }, {threshold:.4});
+    io2.observe(stats);
   }
 
   /* expandable case study */

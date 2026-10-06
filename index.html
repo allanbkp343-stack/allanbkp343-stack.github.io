@@ -93,6 +93,29 @@
     padding-bottom:2px;transition:border-color .15s ease,color .15s ease}
   .linkrow a:hover{border-color:var(--accent);color:var(--accent)}
 
+  /* ── Running lines ────────────────────────────────────── */
+  .runline{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    overflow:hidden;position:relative;padding:11px 0;white-space:nowrap}
+  .runline::before,.runline::after{content:"";position:absolute;top:0;bottom:0;width:110px;z-index:2;pointer-events:none}
+  .runline::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+  .runline::after{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
+  .runline .track{display:inline-flex;animation:run 52s linear infinite;will-change:transform}
+  .runline:hover .track{animation-play-state:paused}
+  .runline .seq{display:inline-flex;align-items:center}
+  .runline .seq span{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.7rem;
+    letter-spacing:.24em;text-transform:uppercase;color:var(--faint);margin:0 18px}
+  .runline .seq b{color:var(--accent);font-weight:400;margin:0 18px;font-size:.72rem}
+  .runline.quote .seq span{font-family:"Fraunces",Georgia,serif;font-style:italic;
+    text-transform:none;letter-spacing:.015em;font-size:1.02rem;color:var(--muted);margin:0 16px}
+  .runline.quote .seq b{font-family:"Fraunces",Georgia,serif;font-style:italic;
+    font-weight:360;color:var(--accent);margin:0 14px;font-size:1.05rem}
+  @keyframes run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+  /* ── Print details ────────────────────────────────────── */
+  .prose .dropcap::first-letter{font-family:"Fraunces",Georgia,serif;font-weight:420;font-size:3.15em;
+    float:left;line-height:.8;padding:7px 13px 0 0;color:var(--accent)}
+  .endmark{color:var(--faint);letter-spacing:.55em;font-size:.8rem;margin-top:30px}
+
   /* ── Sections ─────────────────────────────────────────── */
   section{padding:76px 0;border-bottom:1px solid var(--line)}
   .sec-label{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.7rem;
@@ -193,6 +216,10 @@
     *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
     .reveal{opacity:1;transform:none}
     html{scroll-behavior:auto}
+    .runline{white-space:normal;text-align:center}
+    .runline .track{animation:none;display:block}
+    .runline .seq{display:inline-flex;flex-wrap:wrap;justify-content:center}
+    .runline .seq + .seq{display:none}
   }
 </style>
 </head>
@@ -242,6 +269,17 @@
   </div>
 </section>
 
+<div class="runline" aria-hidden="true">
+  <div class="track">
+    <div class="seq">
+      <span>Offensive Security</span><b>·</b><span>Purple Team</span><b>·</b><span>Security Automation</span><b>·</b><span>Active Directory</span><b>·</b><span>Cloud &amp; Containers</span><b>·</b><span>Knowledge Systems</span><b>·</b><span>Evidence First</span><b>·</b><span>Scope Always</span><b>·</b>
+    </div>
+    <div class="seq">
+      <span>Offensive Security</span><b>·</b><span>Purple Team</span><b>·</b><span>Security Automation</span><b>·</b><span>Active Directory</span><b>·</b><span>Cloud &amp; Containers</span><b>·</b><span>Knowledge Systems</span><b>·</b><span>Evidence First</span><b>·</b><span>Scope Always</span><b>·</b>
+    </div>
+  </div>
+</div>
+
 <section id="work">
   <div class="wrap">
     <div class="sec-label reveal">01 — Selected Work</div>
@@ -250,7 +288,7 @@
     <div class="case reveal">
       <aside class="sn"><i>Margin note</i>Branch decisions are scored on evidence strength, knowledge-base support, operational noise, and complexity — and recorded, so the reasoning survives the session.</aside>
       <div class="prose">
-        <p>
+        <p class="dropcap">
           Most of what limits security work isn't a lack of tools. It's fragmentation: findings scattered
           across terminals, context that dies between sessions, evidence that lives nowhere, and the same
           dead ends re-explored on every engagement.
@@ -294,6 +332,7 @@
           writing below, sanitized and redacted. Details available on request.
         </p>
       </div>
+      <div class="endmark" aria-hidden="true">· · ·</div>
     </div>
 
     <div class="prose reveal" style="margin-top:44px;">
@@ -434,6 +473,17 @@
 </section>
 
 </main>
+
+<div class="runline quote" aria-hidden="true">
+  <div class="track">
+    <div class="seq">
+      <span>The path is part of the evidence</span><b>—</b><span>recon · hypothesis · validation · pivot · escalate · evidence · lessons</span><b>—</b><span>if it isn't provable, it isn't a finding</span><b>—</b>
+    </div>
+    <div class="seq">
+      <span>The path is part of the evidence</span><b>—</b><span>recon · hypothesis · validation · pivot · escalate · evidence · lessons</span><b>—</b><span>if it isn't provable, it isn't a finding</span><b>—</b>
+    </div>
+  </div>
+</div>
 
 <footer>
   <div class="wrap">

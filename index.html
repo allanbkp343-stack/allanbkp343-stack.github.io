@@ -423,6 +423,57 @@
   #work .case .more-btn{background:linear-gradient(135deg,#a78bfa,#e879f9);color:#1b0b30;
     box-shadow:0 12px 34px -16px rgba(167,139,250,.85)}
   #work .case .more-btn:hover{box-shadow:0 16px 40px -14px rgba(232,121,249,.85)}
+
+  /* ── Mission playback (FIG 0.1) ───────────────────────── */
+  .fig{margin:32px 0 10px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.62rem;
+    letter-spacing:.2em;text-transform:uppercase;color:#a78bfa}
+  .demo{border:1px solid rgba(167,139,250,.42);border-radius:14px;overflow:hidden;background:#0a0d14;
+    box-shadow:0 34px 90px -55px rgba(167,139,250,.55), inset 0 0 0 1px rgba(255,255,255,.02)}
+  .demo-chrome{display:flex;align-items:center;gap:8px;padding:10px 14px;background:#101422;border-bottom:1px solid rgba(255,255,255,.08)}
+  .demo-chrome .dot{width:9px;height:9px;border-radius:50%}
+  .demo-chrome .dot.r{background:#f87171}.demo-chrome .dot.y{background:#fbbf24}.demo-chrome .dot.g{background:#34d399}
+  .demo-title{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.68rem;color:#8b95a8;margin-left:6px}
+  .demo-live{margin-left:auto;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.6rem;letter-spacing:.16em;color:#34d399}
+  .demo-body{display:grid;grid-template-columns:176px 1fr;min-height:312px}
+  .demo-side{background:#0d1119;border-right:1px solid rgba(255,255,255,.07);padding:14px 12px;
+    font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.7rem}
+  .agent{display:flex;align-items:center;gap:9px;padding:6px 9px;border-radius:7px;color:#7d8798;
+    transition:background .25s ease,color .25s ease}
+  .agent .adot{width:6px;height:6px;border-radius:50%;background:#3a4356;flex:none}
+  .agent.on{color:#e7ecf5;background:rgba(167,139,250,.13)}
+  .agent.on .adot{background:#a78bfa;box-shadow:0 0 9px rgba(167,139,250,.9)}
+  .demo-phase{margin-top:12px;border-top:1px solid rgba(255,255,255,.07);padding-top:10px;
+    font-size:.6rem;letter-spacing:.16em;color:#5c6577}
+  .demo-phase b{color:#a78bfa;font-weight:500}
+  .demo-main{padding:14px 18px 16px;display:flex;flex-direction:column;min-width:0}
+  .demo-progress{height:3px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden;margin-bottom:12px}
+  .demo-progress i{display:block;height:100%;width:0;background:linear-gradient(90deg,#a78bfa,#e879f9);transition:width .7s ease}
+  .demo-log{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.75rem;line-height:2;color:#9aa4b5;flex:1;min-height:0}
+  .demo-log .ln{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;animation:lnin .3s ease}
+  @keyframes lnin{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+  .demo-log .ts{color:#525c6e;margin-right:10px}
+  .demo-log .ok{color:#34d399}.demo-log .warn{color:#fbbf24}
+  .demo-log .act{color:#22d3ee}.demo-log .vio{color:#c4b5fd}
+  .demo-approve{display:flex;align-items:center;gap:12px;border:1px solid rgba(167,139,250,.55);
+    background:rgba(167,139,250,.1);border-radius:10px;padding:9px 13px;margin-top:12px;
+    font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.68rem;color:#c8d1e0;
+    opacity:0;transform:translateY(8px);transition:opacity .35s ease,transform .35s ease}
+  .demo-approve.show{opacity:1;transform:none}
+  .demo-approve b{color:#c4b5fd;font-weight:500}
+  .demo-approve .btns{margin-left:auto;display:flex;gap:7px;flex:none}
+  .demo-approve .btns span{border:1px solid rgba(255,255,255,.2);border-radius:7px;padding:2px 10px;color:#c8d1e0}
+  .demo-approve.resolved{border-color:rgba(52,211,153,.5);background:rgba(52,211,153,.08)}
+  .demo-approve.resolved .ok{background:#34d399;color:#03231a;border-color:transparent;font-weight:600}
+  .demo-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);
+    border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-top:18px}
+  .demo-stats div{background:var(--bg-elev);padding:12px 14px;font-size:.78rem;color:var(--muted)}
+  .demo-stats b{display:block;font-family:var(--display);font-weight:700;font-size:1.28rem;
+    background:linear-gradient(92deg,#a78bfa,#e879f9);-webkit-background-clip:text;background-clip:text;color:transparent}
+  @media (max-width:760px){
+    .demo-body{grid-template-columns:1fr}
+    .demo-side{display:none}
+    .demo-stats{grid-template-columns:1fr 1fr}
+  }
 </style>
 </head>
 <body>
@@ -541,6 +592,39 @@
             dead ends re-explored on every engagement. NEMESIS was built to fix that — not by adding more
             output, but by adding memory, discipline, and proof.
           </p>
+        </div>
+
+        <div class="fig">FIG 0.1 — Mission playback · sanitized</div>
+        <div class="demo" aria-label="NEMESIS mission playback (sanitized)">
+          <div class="demo-chrome">
+            <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+            <span class="demo-title">nemesis — session playback</span>
+            <span class="demo-live">● LIVE</span>
+          </div>
+          <div class="demo-body">
+            <aside class="demo-side">
+              <div class="agent" data-a="recon"><span class="adot"></span>recon</div>
+              <div class="agent" data-a="web"><span class="adot"></span>web</div>
+              <div class="agent" data-a="identity"><span class="adot"></span>identity</div>
+              <div class="agent" data-a="escalation"><span class="adot"></span>escalation</div>
+              <div class="agent" data-a="post"><span class="adot"></span>post-exploit</div>
+              <div class="demo-phase">PHASE<br><b id="demo-phase">SCOPE</b></div>
+            </aside>
+            <div class="demo-main">
+              <div class="demo-progress"><i id="demo-bar"></i></div>
+              <div class="demo-log" id="demo-log"></div>
+              <div class="demo-approve" id="demo-approve">
+                <span><b>HIGH-RISK ACTION</b> — operator approval required</span>
+                <span class="btns"><span class="ok">Approve</span><span class="no">Deny</span></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="demo-stats">
+          <div><b>06</b>specialist agents</div>
+          <div><b>100k+</b>knowledge records</div>
+          <div><b>08</b>lifecycle phases</div>
+          <div><b>100%</b>high-risk actions human-gated</div>
         </div>
 
         <div class="chain" aria-label="Assessment lifecycle">
@@ -1027,6 +1111,76 @@
       phTitle.textContent = p[0]; phBody.textContent = p[1]; phOut.textContent = p[2];
     });
   });
+
+  /* NEMESIS mission playback */
+  var demoLog = document.getElementById("demo-log");
+  if (demoLog){
+    var demoBar = document.getElementById("demo-bar");
+    var demoPhase = document.getElementById("demo-phase");
+    var demoApprove = document.getElementById("demo-approve");
+    var script = [
+      ["07:41:02","scope locked — target authorised (lab range)","","SCOPE",10,""],
+      ["07:41:05","session state initialised · evidence stream open","","",18,""],
+      ["07:41:38","recon ▸ 6 services mapped · versions fingerprinted","ok","RECON",30,"recon"],
+      ["07:42:11","kb match · 8 candidate techniques retrieved","act","",38,""],
+      ["07:42:44","web ▸ hypothesis: parameterised query on /api/items","act","MODEL",48,"web"],
+      ["07:43:20","validate ▸ controlled probe · behaviour confirmed","ok","VALIDATE",56,"web"],
+      ["07:44:02","escalation path modelled · scored 0.86 · branch B chosen","vio","",64,"identity"],
+      ["07:44:30","high-risk action — sandbox escape payload staged","warn","ESCALATE",68,"escalation"],
+      ["07:44:31","awaiting operator approval …","warn","",70,"","show"],
+      ["07:45:10","operator approved via telegram · executing","ok","",78,"","resolve"],
+      ["07:45:41","escalated · admin context obtained","ok","",84,"escalation"],
+      ["07:46:05","evidence sealed · 14 artefacts · sha256 recorded","","EVIDENCE",90,""],
+      ["07:46:30","report drafted · mitre mapping · remediation notes","","REPORT",95,""],
+      ["07:47:00","session closed · knowledge base updated (+3 techniques)","vio","",100,""]
+    ];
+    var di = 0;
+    function demoReset(){
+      demoLog.innerHTML = "";
+      demoBar.style.width = "0";
+      demoPhase.textContent = "SCOPE";
+      demoApprove.className = "demo-approve";
+      var okBtn = demoApprove.querySelector(".ok");
+      if (okBtn) okBtn.textContent = "Approve";
+      document.querySelectorAll(".demo .agent").forEach(function(a){ a.classList.remove("on"); });
+      di = 0;
+    }
+    function demoStep(){
+      if (di >= script.length){
+        setTimeout(function(){ demoReset(); setTimeout(demoStep, 600); }, 3800);
+        return;
+      }
+      var s = script[di++];
+      var ln = document.createElement("div");
+      ln.className = "ln" + (s[2] ? " " + s[2] : "");
+      ln.innerHTML = '<span class="ts">' + s[0] + "</span>" + s[1];
+      demoLog.appendChild(ln);
+      while (demoLog.children.length > 9) demoLog.removeChild(demoLog.firstChild);
+      if (s[3]) demoPhase.textContent = s[3];
+      demoBar.style.width = s[4] + "%";
+      if (s[5]){ var a = document.querySelector('.demo .agent[data-a="' + s[5] + '"]'); if (a) a.classList.add("on"); }
+      if (s[6] === "show") demoApprove.classList.add("show");
+      if (s[6] === "resolve"){
+        demoApprove.classList.add("show", "resolved");
+        var okB = demoApprove.querySelector(".ok");
+        if (okB) okB.textContent = "Approved";
+      }
+      setTimeout(demoStep, 850);
+    }
+    if (rm){
+      script.forEach(function(s){
+        var ln = document.createElement("div");
+        ln.className = "ln" + (s[2] ? " " + s[2] : "");
+        ln.innerHTML = '<span class="ts">' + s[0] + "</span>" + s[1];
+        demoLog.appendChild(ln);
+      });
+      demoBar.style.width = "100%";
+      demoPhase.textContent = "REPORT";
+    } else {
+      demoReset();
+      setTimeout(demoStep, 900);
+    }
+  }
 
   /* operator console */
   var con = document.getElementById("console"),

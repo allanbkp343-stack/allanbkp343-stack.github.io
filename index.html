@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Allan Kimani Wanjiku — Cybersecurity Engineer</title>
-<meta name="description" content="Cybersecurity engineer in Kenya — offensive security, purple team, and the automation that makes security work compound. Notes, work, and writing.">
+<meta name="description" content="Cybersecurity engineer in Kenya — offensive security, purple team, and the automation that makes security work compound.">
 <meta name="author" content="Allan Kimani Wanjiku">
 <link rel="canonical" href="https://allanbkp343-stack.github.io/">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
@@ -21,81 +21,106 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,340;0,9..144,420;0,9..144,520;1,9..144,360&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  /* ── Palettes ─────────────────────────────────────────── */
+  /* ── Themes ───────────────────────────────────────────── */
   :root[data-theme="dark"]{
     --bg:#0c0e12; --bg-elev:#11141a; --bg-soft:#101319;
     --text:#e9e6df; --muted:#9aa2ad; --faint:#6f7782;
-    --line:rgba(233,230,223,.13); --line-strong:rgba(233,230,223,.26);
+    --line:rgba(233,230,223,.13); --line-strong:rgba(233,230,223,.28);
     --accent:#8fd0ae; --accent-ink:#0c2a1f; --accent-soft:rgba(143,208,174,.12);
-    --shadow:0 22px 60px -34px rgba(0,0,0,.85);
+    --chip:#171b22;
   }
   :root[data-theme="light"]{
     --bg:#f7f5f0; --bg-elev:#fffefb; --bg-soft:#f1eee7;
     --text:#1d1f23; --muted:#5d6570; --faint:#8b939d;
-    --line:rgba(29,31,35,.13); --line-strong:rgba(29,31,35,.26);
+    --line:rgba(29,31,35,.13); --line-strong:rgba(29,31,35,.28);
     --accent:#0d6e51; --accent-ink:#f2fbf7; --accent-soft:rgba(13,110,81,.1);
-    --shadow:0 20px 50px -36px rgba(29,31,35,.35);
+    --chip:#efebe2;
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
-  body{
-    background:var(--bg); color:var(--text);
+  body{background:var(--bg);color:var(--text);
     font-family:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-    font-size:17px; line-height:1.72; -webkit-font-smoothing:antialiased;
-    transition:background .25s ease,color .25s ease;
-  }
+    font-size:17px;line-height:1.72;-webkit-font-smoothing:antialiased;
+    transition:background .25s ease,color .25s ease;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
   a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
   ::selection{background:var(--accent-soft)}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 30px}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 30px}
+  .mono{font-family:"JetBrains Mono",ui-monospace,monospace}
 
-  /* progress */
-  #progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--accent);z-index:80;opacity:.75}
+  #progress{position:fixed;top:0;left:0;height:2px;width:0;background:var(--accent);z-index:90;opacity:.8}
 
   /* ── Masthead ─────────────────────────────────────────── */
-  .masthead{
-    position:sticky;top:0;z-index:60;
-    background:color-mix(in srgb, var(--bg) 86%, transparent);
-    backdrop-filter:blur(10px); border-bottom:1px solid var(--line);
-  }
-  .mast-inner{max-width:1080px;margin:0 auto;padding:13px 30px;
-    display:flex;align-items:center;justify-content:space-between;gap:22px}
-  .mark{font-family:"Fraunces",Georgia,serif;font-size:1.02rem;letter-spacing:.01em;white-space:nowrap}
+  .masthead{position:sticky;top:0;z-index:60;
+    background:color-mix(in srgb,var(--bg) 86%,transparent);
+    backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .mast-inner{max-width:1100px;margin:0 auto;padding:12px 30px;
+    display:flex;align-items:center;justify-content:space-between;gap:20px}
+  .mark{font-family:"Fraunces",Georgia,serif;font-size:1.02rem;white-space:nowrap}
   .mark b{font-weight:520}
   .mark span{color:var(--accent)}
-  .nav{display:flex;gap:26px;align-items:center;font-size:.86rem;color:var(--muted)}
+  .nav{display:flex;gap:24px;align-items:center;font-size:.85rem;color:var(--muted)}
   .nav a{transition:color .15s ease;padding:2px 0;border-bottom:1px solid transparent}
   .nav a:hover{color:var(--text);border-bottom-color:var(--line-strong)}
-  .theme-btn{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;
+  .mast-right{display:flex;align-items:center;gap:16px}
+  .stat-badge{display:inline-flex;align-items:center;gap:8px}
+  .pulse{width:7px;height:7px;border-radius:50%;background:var(--accent);
+    box-shadow:0 0 0 0 color-mix(in srgb,var(--accent) 55%,transparent);animation:pulse 2.4s infinite}
+  @keyframes pulse{70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
+  .online{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.66rem;letter-spacing:.16em;color:var(--accent);white-space:nowrap}
+  .clock{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.66rem;letter-spacing:.1em;color:var(--faint);white-space:nowrap}
+  .theme-btn{display:inline-flex;align-items:center;justify-content:center;width:31px;height:31px;
     border:1px solid var(--line);border-radius:50%;background:transparent;color:var(--muted);cursor:pointer;
     transition:color .15s ease,border-color .15s ease}
   .theme-btn:hover{color:var(--text);border-color:var(--line-strong)}
   .theme-btn svg{width:15px;height:15px}
-  :root[data-theme="dark"] .icon-sun{display:block}
-  :root[data-theme="dark"] .icon-moon{display:none}
-  :root[data-theme="light"] .icon-sun{display:none}
-  :root[data-theme="light"] .icon-moon{display:block}
+  :root[data-theme="dark"] .icon-sun{display:block} :root[data-theme="dark"] .icon-moon{display:none}
+  :root[data-theme="light"] .icon-sun{display:none} :root[data-theme="light"] .icon-moon{display:block}
 
   /* ── Hero ─────────────────────────────────────────────── */
-  .hero{padding:88px 0 66px;border-bottom:1px solid var(--line)}
-  .eyebrow{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.72rem;
-    letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:22px}
+  .hero{padding:78px 0 62px;border-bottom:1px solid var(--line);position:relative}
+  .hero-inner{display:grid;grid-template-columns:1.45fr .8fr;gap:54px;align-items:start}
+  .eyebrow{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.7rem;
+    letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:24px;display:flex;gap:22px;flex-wrap:wrap}
+  .eyebrow i{font-style:normal;color:var(--faint)}
   h1{font-family:"Fraunces",Georgia,serif;font-weight:420;letter-spacing:-.015em;
-    font-size:clamp(2.5rem,5.6vw,3.9rem);line-height:1.08;margin-bottom:22px}
-  .lede{font-size:clamp(1.12rem,2vw,1.32rem);line-height:1.6;color:var(--text);
-    max-width:44ch;font-weight:400;font-family:"Fraunces",Georgia,serif}
-  .lede em{font-style:italic;color:var(--accent)}
-  .sub{color:var(--muted);max-width:62ch;margin-top:22px;font-size:1rem}
-  .meta-row{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:30px;font-size:.85rem;color:var(--faint)}
+    font-size:clamp(2.3rem,5vw,3.5rem);line-height:1.1;margin-bottom:22px}
+  .lede{font-family:"Fraunces",Georgia,serif;font-size:clamp(1.1rem,1.9vw,1.28rem);
+    line-height:1.62;max-width:46ch}
+  .rotate-wrap{display:inline-block;position:relative;color:var(--accent);font-style:italic}
+  .rotate{transition:opacity .22s ease;display:inline-block}
+  .sub{color:var(--muted);max-width:58ch;margin-top:22px;font-size:.99rem}
+  .meta-row{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:26px;font-size:.84rem;color:var(--faint)}
   .meta-row b{color:var(--muted);font-weight:500}
-  .linkrow{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:34px;font-size:.95rem}
-  .linkrow a{color:var(--text);border-bottom:1px solid var(--line-strong);
-    padding-bottom:2px;transition:border-color .15s ease,color .15s ease}
+  .linkrow{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:30px;font-size:.94rem}
+  .linkrow a{color:var(--text);border-bottom:1px solid var(--line-strong);padding-bottom:2px;
+    transition:border-color .15s ease,color .15s ease}
   .linkrow a:hover{border-color:var(--accent);color:var(--accent)}
+  .hint{margin-top:22px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.68rem;
+    color:var(--faint);letter-spacing:.05em;cursor:pointer}
+  .hint kbd{border:1px solid var(--line-strong);border-radius:4px;padding:1px 6px;color:var(--muted)}
+
+  /* dossier card */
+  .dossier{background:var(--bg-elev);border:1px solid var(--line-strong);border-radius:14px;
+    overflow:hidden;box-shadow:0 24px 60px -40px rgba(0,0,0,.7)}
+  .dos-head{display:flex;justify-content:space-between;align-items:center;padding:11px 16px;
+    border-bottom:1px solid var(--line);background:var(--bg-soft);
+    font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.64rem;letter-spacing:.18em;color:var(--faint)}
+  .dos-head b{color:var(--accent);font-weight:500}
+  .dos-body{padding:6px 16px 12px}
+  .dos-row{display:flex;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px solid var(--line);
+    font-size:.86rem}
+  .dos-row:last-child{border-bottom:0}
+  .dos-row dt{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.64rem;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--faint);padding-top:3px;white-space:nowrap}
+  .dos-row dd{text-align:right;color:var(--muted)}
+  .dos-row dd b{color:var(--text);font-weight:500}
+  .dos-foot{padding:10px 16px;border-top:1px solid var(--line);background:var(--bg-soft);
+    font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.64rem;letter-spacing:.12em;color:var(--faint)}
+  .dos-foot b{color:var(--accent);font-weight:500}
 
   /* ── Running lines ────────────────────────────────────── */
-  .runline{border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-    overflow:hidden;position:relative;padding:11px 0;white-space:nowrap}
+  .runline{border-bottom:1px solid var(--line);overflow:hidden;position:relative;padding:11px 0;white-space:nowrap}
   .runline::before,.runline::after{content:"";position:absolute;top:0;bottom:0;width:110px;z-index:2;pointer-events:none}
   .runline::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
   .runline::after{right:0;background:linear-gradient(270deg,var(--bg),transparent)}
@@ -105,112 +130,189 @@
   .runline .seq span{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.7rem;
     letter-spacing:.24em;text-transform:uppercase;color:var(--faint);margin:0 18px}
   .runline .seq b{color:var(--accent);font-weight:400;margin:0 18px;font-size:.72rem}
-  .runline.quote .seq span{font-family:"Fraunces",Georgia,serif;font-style:italic;
-    text-transform:none;letter-spacing:.015em;font-size:1.02rem;color:var(--muted);margin:0 16px}
-  .runline.quote .seq b{font-family:"Fraunces",Georgia,serif;font-style:italic;
-    font-weight:360;color:var(--accent);margin:0 14px;font-size:1.05rem}
+  .runline.quote .seq span{font-family:"Fraunces",Georgia,serif;font-style:italic;text-transform:none;
+    letter-spacing:.015em;font-size:1.02rem;color:var(--muted);margin:0 16px}
+  .runline.quote .seq b{font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:360;
+    color:var(--accent);margin:0 14px;font-size:1.05rem}
   @keyframes run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-  /* ── Print details ────────────────────────────────────── */
-  .prose .dropcap::first-letter{font-family:"Fraunces",Georgia,serif;font-weight:420;font-size:3.15em;
-    float:left;line-height:.8;padding:7px 13px 0 0;color:var(--accent)}
-  .endmark{color:var(--faint);letter-spacing:.55em;font-size:.8rem;margin-top:30px}
-
   /* ── Sections ─────────────────────────────────────────── */
-  section{padding:76px 0;border-bottom:1px solid var(--line)}
-  .sec-label{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.7rem;
-    letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin-bottom:16px}
-  h2{font-family:"Fraunces",Georgia,serif;font-weight:420;letter-spacing:-.01em;
-    font-size:clamp(1.6rem,3vw,2.15rem);line-height:1.25;margin-bottom:26px}
+  section{padding:78px 0;border-bottom:1px solid var(--line)}
+  .sec-head{margin-bottom:36px}
+  .sec-kicker{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.68rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:14px;display:flex;gap:16px;align-items:baseline}
+  .sec-kicker i{font-style:normal;color:var(--faint)}
+  h2{font-family:"Fraunces",Georgia,serif;font-weight:420;letter-spacing:-.012em;
+    font-size:clamp(1.55rem,2.9vw,2.1rem);line-height:1.26;margin-bottom:14px}
+  .sec-sub{color:var(--muted);max-width:64ch;font-size:.99rem}
   .prose{max-width:66ch}
-  .prose p{color:var(--text);margin-bottom:1.15em}
+  .prose p{margin-bottom:1.1em}
   .prose p.dim{color:var(--muted)}
-  .prose h3{font-family:"Fraunces",Georgia,serif;font-weight:480;font-size:1.16rem;
-    margin:1.9em 0 .55em;letter-spacing:.005em}
-  .prose a{color:var(--accent);border-bottom:1px solid color-mix(in srgb, var(--accent) 45%, transparent);padding-bottom:1px}
-  .prose a:hover{border-bottom-color:var(--accent)}
-
-  /* pull quote */
+  .prose .dropcap::first-letter{font-family:"Fraunces",Georgia,serif;font-weight:420;font-size:3.1em;
+    float:left;line-height:.8;padding:7px 13px 0 0;color:var(--accent)}
   .pull{font-family:"Fraunces",Georgia,serif;font-style:italic;font-weight:360;
-    font-size:clamp(1.25rem,2.4vw,1.55rem);line-height:1.5;color:var(--text);
-    border-left:2px solid var(--accent);padding:6px 0 6px 24px;margin:34px 0;max-width:52ch}
+    font-size:clamp(1.2rem,2.2vw,1.5rem);line-height:1.5;border-left:2px solid var(--accent);
+    padding:6px 0 6px 24px;margin:30px 0;max-width:50ch}
 
-  /* sidenotes (margin notes on wide screens) */
-  .sn{font-size:.85rem;line-height:1.58;color:var(--muted)}
-  @media (min-width:1180px){
-    .case{position:relative;max-width:62ch}
-    .sn{float:right;clear:right;width:238px;margin-right:-292px;margin-top:6px;
-      border-top:1px solid var(--line-strong);padding-top:10px}
-    .sn i{display:block;font-style:normal;font-family:"JetBrains Mono",ui-monospace,monospace;
-      font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:5px}
-  }
-  @media (max-width:1179px){
-    .sn{display:block;border-left:2px solid var(--accent-soft);background:var(--bg-soft);
-      padding:12px 16px;margin:16px 0;border-radius:10px}
-    .sn i{display:block;font-style:normal;font-family:"JetBrains Mono",ui-monospace,monospace;
-      font-size:.64rem;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
-  }
+  /* chips + labels */
+  .chip{display:inline-block;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.62rem;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 40%,transparent);
+    background:var(--accent-soft);border-radius:999px;padding:3px 10px}
+  .chip.mut{color:var(--muted);border-color:var(--line-strong);background:var(--chip)}
+  .tagrow{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
 
-  /* practice list */
-  .praxis{max-width:66ch}
-  .praxis .row{display:grid;grid-template-columns:210px 1fr;gap:26px;padding:22px 0;border-top:1px solid var(--line)}
-  .praxis .row:last-child{border-bottom:1px solid var(--line)}
-  .praxis dt{font-family:"Fraunces",Georgia,serif;font-size:1.06rem;font-weight:480}
-  .praxis dd{color:var(--muted);font-size:.97rem}
+  /* ── Case study ───────────────────────────────────────── */
+  .case{border:1px solid var(--line-strong);border-radius:16px;background:var(--bg-elev);
+    overflow:hidden;box-shadow:0 30px 70px -50px rgba(0,0,0,.75)}
+  .case-top{padding:30px 32px 24px;border-bottom:1px solid var(--line);background:var(--bg-soft)}
+  .case-top .labels{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+  .case-top h3{font-family:"Fraunces",Georgia,serif;font-weight:480;font-size:1.5rem;letter-spacing:-.01em;margin-bottom:10px}
+  .case-top p{color:var(--muted);max-width:70ch}
+  .case-body{padding:28px 32px 30px}
+  .case-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .cell{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--bg)}
+  .cell b{display:block;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.62rem;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin-bottom:7px}
+  .cell span{font-size:.9rem;color:var(--muted)}
+  .cell span strong{color:var(--text);font-weight:500}
 
-  /* field notes index */
-  .notes{max-width:74ch}
-  .notes .item{display:grid;grid-template-columns:200px 1fr auto;gap:22px;align-items:baseline;
-    padding:17px 0;border-top:1px solid var(--line)}
-  .notes .item:last-child{border-bottom:1px solid var(--line)}
-  .notes .name{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.84rem;color:var(--text)}
-  .notes .name small{display:block;color:var(--faint);font-size:.68rem;letter-spacing:.08em;margin-top:3px}
-  .notes .line{color:var(--muted);font-size:.95rem}
-  .notes .go{font-size:.85rem;color:var(--accent);white-space:nowrap}
-  .notes .go:hover{text-decoration:underline}
+  /* chain visual */
+  .chain{display:flex;flex-wrap:wrap;align-items:center;gap:0;margin:24px 0 6px}
+  .chain .node{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.66rem;letter-spacing:.06em;
+    border:1px solid var(--line-strong);border-radius:999px;padding:6px 13px;color:var(--muted);
+    background:var(--bg);transition:border-color .15s ease,color .15s ease}
+  .chain .node:hover{border-color:var(--accent);color:var(--text)}
+  .chain .arrow{color:var(--accent);margin:0 8px;font-size:.7rem}
 
-  /* method */
-  .method{max-width:70ch;counter-reset:step}
-  .method .step{display:grid;grid-template-columns:52px 1fr;gap:20px;padding:19px 0;border-top:1px solid var(--line)}
-  .method .step:last-child{border-bottom:1px solid var(--line)}
-  .method .n{font-family:"Fraunces",Georgia,serif;font-size:1.5rem;font-weight:340;color:var(--accent);
-    line-height:1.2;font-variant-numeric:oldstyle-nums}
-  .method h3{font-family:"Fraunces",Georgia,serif;font-weight:480;font-size:1.05rem;margin-bottom:3px}
-  .method p{color:var(--muted);font-size:.95rem}
+  /* declassify block */
+  .declass{margin-top:26px;border:1px dashed var(--line-strong);border-radius:12px;padding:18px;background:var(--bg)}
+  .declass-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:14px}
+  .declass-head .t{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.65rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--faint)}
+  .dbtn{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.65rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--accent);background:transparent;border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);
+    border-radius:8px;padding:6px 13px;cursor:pointer;transition:background .15s ease}
+  .dbtn:hover{background:var(--accent-soft)}
+  .sysmap{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+  .frag{border:1px solid var(--line);border-radius:10px;padding:12px 13px;background:var(--bg-soft);
+    transition:filter .45s ease,opacity .45s ease}
+  .frag b{display:block;font-size:.68rem;font-family:"JetBrains Mono",ui-monospace,monospace;
+    letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+  .frag span{font-size:.8rem;color:var(--faint);line-height:1.5;display:block}
+  .declass.locked .frag b,.declass.locked .frag span{filter:blur(5px);opacity:.5;user-select:none}
+  .declass.locked .frag{background:repeating-linear-gradient(45deg,var(--bg-soft),var(--bg-soft) 8px,var(--chip) 8px,var(--chip) 9px)}
 
-  /* about */
-  .about-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:54px;align-items:start}
+  /* expandable */
+  .case-more{display:grid;grid-template-rows:0fr;transition:grid-template-rows .55s ease}
+  .case-more.open{grid-template-rows:1fr}
+  .case-more>div{overflow:hidden}
+  .more-btn{margin-top:22px;display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border-radius:999px;
+    background:var(--accent);color:var(--accent-ink);font-weight:600;font-size:.92rem;border:0;cursor:pointer;
+    transition:transform .15s ease,opacity .15s ease}
+  .more-btn:hover{transform:translateY(-1px);opacity:.93}
+  .more-btn svg{width:14px;height:14px;transition:transform .3s ease}
+  .case-more.open+.more-btn svg,.more-btn.open svg{transform:rotate(45deg)}
+
+  /* ── Capability tabs ──────────────────────────────────── */
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+  .tab{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.68rem;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:999px;
+    padding:8px 16px;background:transparent;cursor:pointer;transition:all .15s ease}
+  .tab:hover{color:var(--text);border-color:var(--line-strong)}
+  .tab.active{color:var(--accent-ink);background:var(--accent);border-color:var(--accent);font-weight:500}
+  .panel{display:none;border:1px solid var(--line);border-radius:14px;padding:24px 26px;background:var(--bg-elev)}
+  .panel.active{display:grid;grid-template-columns:1.2fr .8fr;gap:26px}
+  .panel h3{font-family:"Fraunces",Georgia,serif;font-weight:480;font-size:1.18rem;margin-bottom:8px}
+  .panel p{color:var(--muted);font-size:.94rem}
+  .panel .side{align-self:start}
+  .panel .side .lbl{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.6rem;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--faint);margin:12px 0 8px}
+  .panel .side .lbl:first-child{margin-top:0}
+
+  /* ── Field notes cards ────────────────────────────────── */
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .note{border:1px solid var(--line);border-radius:14px;background:var(--bg-elev);padding:22px 22px 20px;
+    transition:transform .18s ease,border-color .18s ease;display:flex;flex-direction:column}
+  .note:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
+  .note .top{display:flex;justify-content:space-between;align-items:baseline;gap:10px;margin-bottom:12px}
+  .note h3{font-family:"Fraunces",Georgia,serif;font-weight:480;font-size:1.16rem}
+  .note .kind{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.6rem;letter-spacing:.14em;color:var(--faint);white-space:nowrap}
+  .note .line{color:var(--muted);font-size:.9rem;margin-bottom:14px}
+  .note .demo{border-top:1px solid var(--line);padding-top:12px;margin-top:auto;font-size:.84rem}
+  .note .demo b{display:block;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.6rem;
+    letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
+  .note .demo p{color:var(--muted);margin-bottom:8px}
+  .note .go{font-size:.85rem;color:var(--accent)}
+  .note .go:hover{text-decoration:underline}
+
+  /* ── Method ───────────────────────────────────────────── */
+  .phases{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+  .phase{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.67rem;letter-spacing:.1em;
+    color:var(--muted);border:1px solid var(--line);border-radius:9px;padding:9px 14px;background:transparent;
+    cursor:pointer;transition:all .15s ease}
+  .phase:hover{color:var(--text);border-color:var(--line-strong)}
+  .phase.active{color:var(--accent-ink);background:var(--accent);border-color:var(--accent);font-weight:500}
+  .phase-panel{border:1px solid var(--line);border-radius:14px;padding:24px 26px;background:var(--bg-elev);min-height:150px}
+  .phase-panel h3{font-family:"Fraunces",Georgia,serif;font-weight:480;font-size:1.18rem;margin-bottom:8px}
+  .phase-panel p{color:var(--muted);max-width:62ch}
+  .phase-panel .out{margin-top:14px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.72rem;color:var(--accent)}
+  .flowline{margin-top:18px;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.72rem;
+    letter-spacing:.12em;color:var(--faint)}
+  .flowline b{color:var(--accent)}
+
+  /* ── About ────────────────────────────────────────────── */
+  .about-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:52px;align-items:start}
   .stats{border-top:1px solid var(--line-strong)}
-  .stat{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
-    padding:13px 0;border-bottom:1px solid var(--line)}
+  .stat{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:13px 0;
+    border-bottom:1px solid var(--line)}
   .stat b{font-family:"Fraunces",Georgia,serif;font-size:1.35rem;font-weight:420;color:var(--accent)}
-  .stat span{color:var(--muted);font-size:.84rem;text-align:right}
+  .stat span{color:var(--muted);font-size:.83rem;text-align:right}
 
   /* contact */
   .contact{border-bottom:0}
-  .contact .prose{margin-bottom:26px}
   .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 26px;border-radius:999px;
-    background:var(--accent);color:var(--accent-ink);font-weight:600;font-size:.94rem;
-    transition:transform .15s ease,opacity .15s ease}
-  .btn:hover{transform:translateY(-1px);opacity:.92}
+    background:var(--accent);color:var(--accent-ink);font-weight:600;font-size:.93rem;
+    transition:transform .15s ease,opacity .15s ease;border:0;cursor:pointer}
+  .btn:hover{transform:translateY(-1px);opacity:.93}
   .btn svg{width:15px;height:15px}
 
-  footer{padding:36px 0 44px;color:var(--faint);font-size:.85rem}
-  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-  footer .mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.72rem;letter-spacing:.04em}
+  footer{padding:34px 0 42px;color:var(--faint);font-size:.84rem}
+  footer .wrap{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  footer .mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.7rem;letter-spacing:.06em}
+
+  /* ── Console ──────────────────────────────────────────── */
+  #console{position:fixed;inset:0;z-index:200;display:none;place-items:center;
+    background:color-mix(in srgb,var(--bg) 55%,rgba(0,0,0,.55));backdrop-filter:blur(6px)}
+  #console.open{display:grid}
+  .con-box{width:min(700px,93vw);background:var(--bg-elev);border:1px solid var(--line-strong);
+    border-radius:14px;overflow:hidden;box-shadow:0 50px 140px -40px rgba(0,0,0,.8)}
+  .con-head{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;
+    border-bottom:1px solid var(--line);background:var(--bg-soft);
+    font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.66rem;letter-spacing:.16em;color:var(--faint)}
+  .con-head b{color:var(--accent);font-weight:500}
+  .con-body{height:310px;overflow-y:auto;padding:18px;font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:.8rem;line-height:1.85}
+  .con-body .p{color:var(--accent)}
+  .con-body .ok{color:var(--accent)}
+  .con-body .dim{color:var(--faint)}
+  .con-input-row{display:flex;align-items:center;gap:10px;border-top:1px solid var(--line);padding:13px 18px;
+    font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.8rem;background:var(--bg-soft)}
+  .con-input-row label{color:var(--accent)}
+  .con-input-row input{flex:1;background:transparent;border:0;outline:0;color:var(--text);font:inherit}
 
   /* reveal */
-  .reveal{opacity:0;transform:translateY(10px);transition:opacity .55s ease,transform .55s ease}
+  .reveal{opacity:0;transform:translateY(12px);transition:opacity .55s ease,transform .55s ease}
   .reveal.in{opacity:1;transform:none}
 
-  @media (max-width:900px){
-    .hero{padding:64px 0 52px}
-    section{padding:58px 0}
+  @media (max-width:980px){
+    .hero-inner{grid-template-columns:1fr;gap:38px}
     .nav{display:none}
     .about-grid{grid-template-columns:1fr;gap:32px}
-    .praxis .row{grid-template-columns:1fr;gap:6px;padding:18px 0}
-    .notes .item{grid-template-columns:1fr;gap:6px;padding:20px 0}
-    .notes .go{margin-top:4px}
+    .cards{grid-template-columns:1fr}
+    .case-grid{grid-template-columns:1fr}
+    .panel.active{grid-template-columns:1fr}
+    section{padding:60px 0}
+    .clock{display:none}
   }
   @media (prefers-reduced-motion:reduce){
     *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
@@ -232,40 +334,67 @@
     <a class="mark" href="#top"><b>Allan Kimani Wanjiku</b><span>.</span></a>
     <nav class="nav" aria-label="Sections">
       <a href="#work">Work</a>
-      <a href="#practice">Practice</a>
+      <a href="#surface">Capabilities</a>
       <a href="#notes">Field Notes</a>
       <a href="#method">Method</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
-    <button class="theme-btn" id="theme-toggle" aria-label="Switch theme" title="Switch theme">
-      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
-      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
-    </button>
+    <div class="mast-right">
+      <span class="clock mono" id="clock">NBO --:--</span>
+      <span class="stat-badge"><span class="pulse"></span><span class="online">OPERATOR ACTIVE</span></span>
+      <button class="theme-btn" id="theme-toggle" aria-label="Switch theme" title="Switch theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.4M12 19.1v2.4M2.5 12h2.4M19.1 12h2.4M4.9 4.9l1.7 1.7M17.4 17.4l1.7 1.7M19.1 4.9l-1.7 1.7M6.6 17.4l-1.7 1.7"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/></svg>
+      </button>
+    </div>
   </div>
 </header>
 
 <main id="top">
 
-<section class="hero">
-  <div class="wrap">
-    <div class="eyebrow">Cybersecurity Engineer · Kenya</div>
-    <h1>I find weaknesses before adversaries do — and build the systems that make that work repeatable.</h1>
-    <p class="lede">Most of my work sits where <em>offensive security</em> meets engineering.</p>
-    <p class="sub">
-      Authorized penetration testing across web, Active Directory, and cloud. Purple-team exercises that
-      test detection as much as exploitation. And tooling that turns every engagement into knowledge that
-      compounds — because security work should survive scrutiny, not just look impressive once.
-    </p>
-    <div class="meta-row">
-      <span><b>Currently</b> — designing a private multi-agent platform for assessment orchestration</span>
-      <span><b>Writing</b> — lab walkthroughs and methodology notes</span>
+<section class="hero" style="border-bottom:0">
+  <div class="wrap hero-inner">
+    <div>
+      <div class="eyebrow">
+        <span>CYBERSECURITY ENGINEER</span>
+        <span><i>·</i> KENYA <i>·</i> UTC+03:00</span>
+        <span><i>·</i> AUTHORIZED WORK ONLY</span>
+      </div>
+      <h1>I find weaknesses before adversaries do — and build the systems that make that work repeatable.</h1>
+      <p class="lede">
+        Most of my work sits where <span class="rotate-wrap"><span class="rotate" id="rotate">offensive security</span></span> meets engineering.
+      </p>
+      <p class="sub">
+        Authorized penetration testing across web, Active Directory, and cloud. Purple-team exercises that
+        test detection as much as exploitation. And tooling that turns every engagement into knowledge
+        that compounds — because security work should survive scrutiny, not just look impressive once.
+      </p>
+      <div class="meta-row">
+        <span><b>Currently</b> — designing a private multi-agent platform for assessment orchestration</span>
+        <span><b>Writing</b> — lab walkthroughs &amp; methodology notes</span>
+      </div>
+      <div class="linkrow">
+        <a href="https://github.com/allanbkp343-stack" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://github.com/allanbkp343-stack/HTB-Machines" target="_blank" rel="noopener">HTB Machines ↗</a>
+        <a href="#contact">Get in touch</a>
+      </div>
+      <div class="hint" id="console-hint">Press <kbd>CTRL</kbd> + <kbd>`</kbd> for operator console</div>
     </div>
-    <div class="linkrow">
-      <a href="https://github.com/allanbkp343-stack" target="_blank" rel="noopener">GitHub ↗</a>
-      <a href="https://github.com/allanbkp343-stack/HTB-Machines" target="_blank" rel="noopener">HTB Machines ↗</a>
-      <a href="#contact">Get in touch</a>
-    </div>
+
+    <aside class="dossier" aria-label="Profile summary">
+      <div class="dos-head"><span>AKW / DOSSIER</span><b>SIG / 343</b></div>
+      <div class="dos-body">
+        <dl>
+          <div class="dos-row"><dt>Name</dt><dd><b>Allan Kimani Wanjiku</b></dd></div>
+          <div class="dos-row"><dt>Role</dt><dd>Cybersecurity Engineer</dd></div>
+          <div class="dos-row"><dt>Base</dt><dd>Kenya · UTC+03:00</dd></div>
+          <div class="dos-row"><dt>Focus</dt><dd>Adversary simulation · automation</dd></div>
+          <div class="dos-row"><dt>Status</dt><dd><b>Open to authorized work</b></dd></div>
+        </dl>
+      </div>
+      <div class="dos-foot"><b>›</b> evidence first · scope always · work that compounds</div>
+    </aside>
   </div>
 </section>
 
@@ -282,151 +411,285 @@
 
 <section id="work">
   <div class="wrap">
-    <div class="sec-label reveal">01 — Selected Work</div>
-    <h2 class="reveal">A platform that runs assessments the way I would.</h2>
-
-    <div class="case reveal">
-      <aside class="sn"><i>Margin note</i>Branch decisions are scored on evidence strength, knowledge-base support, operational noise, and complexity — and recorded, so the reasoning survives the session.</aside>
-      <div class="prose">
-        <p class="dropcap">
-          Most of what limits security work isn't a lack of tools. It's fragmentation: findings scattered
-          across terminals, context that dies between sessions, evidence that lives nowhere, and the same
-          dead ends re-explored on every engagement.
-        </p>
-        <p>
-          I'm building a private platform that addresses that directly. It orchestrates specialist agents
-          across the full assessment lifecycle — reconnaissance through reporting — under a model I
-          actually trust: every action logged, every high-risk step approved, every failed path recorded
-          so it is never retried.
-        </p>
-      </div>
-
-      <h3 style="font-family:'Fraunces',serif;font-weight:480;font-size:1.16rem;margin:34px 0 10px;">How it works</h3>
-      <aside class="sn"><i>Margin note</i>A compounding knowledge base gives each new session a head start — techniques, failures, and context persist across engagements.</aside>
-      <div class="prose">
-        <p>
-          Specialist agents (recon, web, identity, escalation, post-exploitation) work under a decision
-          engine that reasons in branches: it weighs alternatives before acting, and backtracks
-          deliberately instead of retrying. State is written continuously, so a crash or a context
-          reset never costs the engagement its memory.
-        </p>
-      </div>
-
-      <h3 style="font-family:'Fraunces',serif;font-weight:480;font-size:1.16rem;margin:34px 0 10px;">Guardrails matter more than autonomy</h3>
-      <aside class="sn"><i>Margin note</i>In enterprise modes, Ring 3+ actions — exploitation, C2, destructive operations — wait for an explicit human decision before they run.</aside>
-      <div class="prose">
-        <p>
-          Every capability is classified by risk before it is allowed to exist. High-risk actions pause
-          for explicit operator approval; scope and phase gates are enforced at the tool layer, not by
-          good intentions. Failed attempts are treated as first-class results — recorded, searchable,
-          and never repeated. That discipline is the difference between an autonomous system you can
-          deploy and one you merely demo.
-        </p>
-      </div>
-
-      <div class="pull">The goal was never more output. It was evidence that holds up — and work that compounds.</div>
-
-      <div class="prose">
-        <p class="dim">
-          The platform is private R&amp;D. Its lab results, methodology, and lessons show up in the
-          writing below, sanitized and redacted. Details available on request.
-        </p>
-      </div>
-      <div class="endmark" aria-hidden="true">· · ·</div>
+    <div class="sec-head reveal">
+      <div class="sec-kicker"><span>01 — SELECTED WORK</span><i>// CASE 001</i></div>
+      <h2>A platform that runs assessments the way I would.</h2>
     </div>
 
-    <div class="prose reveal" style="margin-top:44px;">
-      <h3>Lab documentation</h3>
+    <div class="case reveal">
+      <div class="case-top">
+        <div class="labels">
+          <span class="chip">PRIVATE R&amp;D</span>
+          <span class="chip mut">STATUS · ACTIVE</span>
+          <span class="chip mut">SANITIZED RESULTS</span>
+        </div>
+        <h3>NEMESIS — Autonomous Purple Team Platform</h3>
+        <p>
+          Multi-agent orchestration across the full assessment lifecycle: reconnaissance, exploitation,
+          escalation, and reporting — under human checkpoints, with evidence that survives scrutiny.
+        </p>
+      </div>
+
+      <div class="case-body">
+        <div class="prose" style="max-width:70ch">
+          <p class="dropcap">
+            Most of what limits security work isn't a lack of tools. It's fragmentation: findings scattered
+            across terminals, context that dies between sessions, evidence that lives nowhere, and the same
+            dead ends re-explored on every engagement. NEMESIS was built to fix that — not by adding more
+            output, but by adding memory, discipline, and proof.
+          </p>
+        </div>
+
+        <div class="chain" aria-label="Assessment lifecycle">
+          <span class="node">Scope</span><span class="arrow">→</span>
+          <span class="node">Recon</span><span class="arrow">→</span>
+          <span class="node">Model</span><span class="arrow">→</span>
+          <span class="node">Validate</span><span class="arrow">→</span>
+          <span class="node">Escalate</span><span class="arrow">→</span>
+          <span class="node">Evidence</span><span class="arrow">→</span>
+          <span class="node">Report</span>
+        </div>
+
+        <div class="case-more" id="case-more">
+          <div>
+            <div class="case-grid" style="margin-top:26px">
+              <div class="cell"><b>Objective</b><span>Orchestrate authorized assessments end to end — <strong>without losing context, provenance, or control</strong>.</span></div>
+              <div class="cell"><b>Approach</b><span>Specialist agents per domain under a decision engine that <strong>reasons in branches</strong> and backtracks deliberately instead of retrying.</span></div>
+              <div class="cell"><b>Guardrails</b><span>Every capability classified by risk; high-risk actions <strong>wait for explicit operator approval</strong>; failed paths recorded and never repeated.</span></div>
+              <div class="cell"><b>Memory</b><span>State written continuously — a crash or context reset <strong>never costs the engagement</strong>. Knowledge compounds across sessions.</span></div>
+            </div>
+
+            <div class="declass locked" id="declass">
+              <div class="declass-head">
+                <span class="t">System map — restricted fragments</span>
+                <button class="dbtn" id="declass-btn">Declassify</button>
+              </div>
+              <div class="sysmap">
+                <div class="frag"><b>Gateway</b><span>Phase filters, enforcer gates, approval rings — scope enforced at the tool layer.</span></div>
+                <div class="frag"><b>Agents</b><span>Recon · web · identity · escalation · post-exploitation, each with clear ownership.</span></div>
+                <div class="frag"><b>State</b><span>Resume, compaction-safe evidence, failed-vector ledger — memory that survives.</span></div>
+                <div class="frag"><b>Knowledge</b><span>Graph retrieval over 100k+ records; technique memory that makes next time faster.</span></div>
+                <div class="frag"><b>Tooling</b><span>Shell, MSF, Burp, Nuclei, BloodHound, sqlmap — orchestrated, logged, gated.</span></div>
+                <div class="frag"><b>Human loop</b><span>Telegram approvals for high-risk actions; timeout means deny and pivot.</span></div>
+              </div>
+            </div>
+
+            <div class="pull">The goal was never more output. It was evidence that holds up — and work that compounds.</div>
+
+            <div class="prose">
+              <p class="dim">
+                NEMESIS stays private; its lab results, methodology, and lessons show up across this site —
+                sanitized and redacted. Details available on request.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <button class="more-btn" id="more-btn" aria-expanded="false" aria-controls="case-more">
+          Read the case study
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="prose reveal" style="margin-top:42px">
       <p>
-        The same discipline, at a smaller scale: <a href="https://github.com/allanbkp343-stack/HTB-Machines" target="_blank" rel="noopener">HTB Machines</a>
+        The same discipline at a smaller scale: <a href="https://github.com/allanbkp343-stack/HTB-Machines" target="_blank" rel="noopener" style="color:var(--accent)">HTB Machines</a>
         collects retired Hack The Box walkthroughs written to be read — phase-tagged chains, reproduction
-        evidence, and the reasoning behind each pivot. Not just the proof: the path.
+        evidence, and the reasoning behind every pivot. Not just the proof: the path.
       </p>
     </div>
   </div>
 </section>
 
-<section id="practice">
+<section id="surface">
   <div class="wrap">
-    <div class="sec-label reveal">02 — Practice</div>
-    <h2 class="reveal">What I work on.</h2>
-    <dl class="praxis reveal">
-      <div class="row">
-        <dt>Offensive security</dt>
-        <dd>Testing web applications, Active Directory, and cloud environments — from first enumeration to proof of impact, always within explicit scope and with evidence that reproduces.</dd>
+    <div class="sec-head reveal">
+      <div class="sec-kicker"><span>02 — CAPABILITY MAP</span><i>// SURFACE</i></div>
+      <h2>Trace the surface. Follow the trust.</h2>
+      <p class="sec-sub">Four surfaces, one habit: understand the system before touching it — then prove what matters.</p>
+    </div>
+
+    <div class="reveal">
+      <div class="tabs" role="tablist" aria-label="Capabilities">
+        <button class="tab active" data-tab="0" role="tab">01 · IDENTITY</button>
+        <button class="tab" data-tab="1" role="tab">02 · APPLICATION</button>
+        <button class="tab" data-tab="2" role="tab">03 · CLOUD</button>
+        <button class="tab" data-tab="3" role="tab">04 · AUTOMATION</button>
       </div>
-      <div class="row">
-        <dt>Purple team</dt>
-        <dd>Adversary simulation with detection validation. Techniques mapped to MITRE ATT&amp;CK, so defensive teams can measure coverage instead of guessing at it.</dd>
+
+      <div class="panel active" data-panel="0" role="tabpanel">
+        <div>
+          <h3>Attack paths are relationships.</h3>
+          <p>
+            Directory permissions, object relationships, and certificate services — analyzed as a graph,
+            not a checklist. I validate representative paths and prioritise remediation by root cause,
+            so breaking one control closes many paths.
+          </p>
+          <div class="tagrow">
+            <span class="chip mut">ACTIVE DIRECTORY</span><span class="chip mut">KERBEROS</span>
+            <span class="chip mut">ADCS</span><span class="chip mut">ACL ANALYSIS</span><span class="chip mut">HYBRID IDENTITY</span>
+          </div>
+        </div>
+        <div class="side">
+          <div class="lbl">Toolkit</div>
+          <div class="tagrow"><span class="chip mut">BLOODHOUND</span><span class="chip mut">CERTIPY</span><span class="chip mut">IMPACKET</span><span class="chip mut">NETEXEC</span></div>
+          <div class="lbl">Seen in</div>
+          <p style="font-size:.86rem">Lab identity chains — Fries, Garfield, DanglingTree</p>
+        </div>
       </div>
-      <div class="row">
-        <dt>Security automation</dt>
-        <dd>Python tooling and agent-based systems that run assessments reproducibly — with safety gates, audit trails, and a human in the loop where it counts.</dd>
+
+      <div class="panel" data-panel="1" role="tabpanel">
+        <div>
+          <h3>Trust boundaries hide in workflows.</h3>
+          <p>
+            Authentication, authorization, business logic, and the assumptions between client and
+            backend. Testing focuses on attack chains rather than isolated scanner findings — mapped
+            first, then validated manually.
+          </p>
+          <div class="tagrow">
+            <span class="chip mut">WEB SECURITY</span><span class="chip mut">API SECURITY</span>
+            <span class="chip mut">AUTHN/AUTHZ</span><span class="chip mut">SSTI</span><span class="chip mut">JWT/OAUTH</span>
+          </div>
+        </div>
+        <div class="side">
+          <div class="lbl">Toolkit</div>
+          <div class="tagrow"><span class="chip mut">BURP SUITE</span><span class="chip mut">FFUF</span><span class="chip mut">SQLMAP</span><span class="chip mut">NUCLEI</span></div>
+          <div class="lbl">Seen in</div>
+          <p style="font-size:.86rem">Lab web chains — Paperwork, Cobblestone, MakeSense, DarkZeroReturns</p>
+        </div>
       </div>
-      <div class="row">
-        <dt>Knowledge systems</dt>
-        <dd>Turning each engagement into searchable technique memory: graphs, retrieval, and cross-session learning that make the next assessment faster than the last.</dd>
+
+      <div class="panel" data-panel="2" role="tabpanel">
+        <div>
+          <h3>Reachability is the product.</h3>
+          <p>
+            Credential abuse paths, IAM escalation, storage exposure, and container escape — assessed
+            from realistic footholds, because a cloud misconfiguration only matters when someone can
+            actually reach it.
+          </p>
+          <div class="tagrow">
+            <span class="chip mut">AWS</span><span class="chip mut">AZURE</span>
+            <span class="chip mut">KUBERNETES</span><span class="chip mut">CONTAINERS</span><span class="chip mut">IMDS/SSRF</span>
+          </div>
+        </div>
+        <div class="side">
+          <div class="lbl">Toolkit</div>
+          <div class="tagrow"><span class="chip mut">AWS CLI</span><span class="chip mut">AZ CLI</span><span class="chip mut">KUBECTL</span><span class="chip mut">DOCKER</span></div>
+          <div class="lbl">Seen in</div>
+          <p style="font-size:.86rem">Lab cloud paths — Nimbus, Smarthire, Silentium</p>
+        </div>
       </div>
-    </dl>
+
+      <div class="panel" data-panel="3" role="tabpanel">
+        <div>
+          <h3>Autonomy needs operator control.</h3>
+          <p>
+            Agent-based tooling with checkpoints, approvals, and audit trails — built so assessments run
+            reproducibly without separating decisions from evidence. The same philosophy behind NEMESIS,
+            applied as open practice.
+          </p>
+          <div class="tagrow">
+            <span class="chip mut">PYTHON</span><span class="chip mut">MCP</span>
+            <span class="chip mut">RAG</span><span class="chip mut">HUMAN-IN-THE-LOOP</span><span class="chip mut">EVIDENCE</span>
+          </div>
+        </div>
+        <div class="side">
+          <div class="lbl">Toolkit</div>
+          <div class="tagrow"><span class="chip mut">PYTHON</span><span class="chip mut">GIT</span><span class="chip mut">DOCKER</span><span class="chip mut">POSTGRES</span></div>
+          <div class="lbl">Seen in</div>
+          <p style="font-size:.86rem">NEMESIS (above) · HTB Machines tooling</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section id="notes">
   <div class="wrap">
-    <div class="sec-label reveal">03 — Field Notes</div>
-    <h2 class="reveal">Selected walkthroughs.</h2>
-    <div class="notes reveal">
-      <div class="item">
-        <div class="name">Paperwork <small>LINUX · LPD</small></div>
-        <div class="line">Command injection in a print service, PJL file transfer between users, and a Unix-socket daemon that hands out privileged descriptors.</div>
-        <a class="go" href="https://github.com/allanbkp343-stack/HTB-Machines/blob/main/Paperwork.md" target="_blank" rel="noopener">Read →</a>
+    <div class="sec-head reveal">
+      <div class="sec-kicker"><span>03 — FIELD NOTES</span><i>// LAB OPERATIONS</i></div>
+      <h2>The path is part of the evidence.</h2>
+      <p class="sec-sub">Selected retired machines. Full guides live in the collection — flags redacted, reasoning preserved.</p>
+    </div>
+    <div class="cards reveal">
+      <div class="note">
+        <div class="top"><h3>Paperwork</h3><span class="kind">HTB · FULL GUIDE</span></div>
+        <p class="line">A print service becomes a foothold: LPD command injection, PJL file transfer between users, and a Unix-socket daemon that hands out privileged descriptors.</p>
+        <div class="demo">
+          <b>What this demonstrates</b>
+          <p>Protocol-level injection into legacy workflows — and how quiet pivots compound.</p>
+          <a class="go" href="https://github.com/allanbkp343-stack/HTB-Machines/blob/main/Paperwork.md" target="_blank" rel="noopener">Read writeup →</a>
+        </div>
       </div>
-      <div class="item">
-        <div class="name">Cobblestone <small>WEB · CREDENTIALS</small></div>
-        <div class="line">A web path built on database credentials and cracked hashes — a reminder that disclosure chains quietly.</div>
-        <a class="go" href="https://github.com/allanbkp343-stack/HTB-Machines/blob/main/Cobblestone.md" target="_blank" rel="noopener">Read →</a>
+      <div class="note">
+        <div class="top"><h3>Cobblestone</h3><span class="kind">HTB · FULL GUIDE</span></div>
+        <p class="line">A web path built on disclosed database credentials and cracked hashes — a reminder that disclosure chains quietly until it doesn't.</p>
+        <div class="demo">
+          <b>What this demonstrates</b>
+          <p>Secret hygiene: where credentials live, how they leak, how far they travel.</p>
+          <a class="go" href="https://github.com/allanbkp343-stack/HTB-Machines/blob/main/Cobblestone.md" target="_blank" rel="noopener">Read writeup →</a>
+        </div>
       </div>
-      <div class="item">
-        <div class="name">Fries <small>WINDOWS · AD</small></div>
-        <div class="line">A wide Windows surface where identity paths, not exploits, carry the chain — documented service by service.</div>
-        <a class="go" href="https://github.com/allanbkp343-stack/HTB-Machines/blob/main/Fries.md" target="_blank" rel="noopener">Read →</a>
+      <div class="note">
+        <div class="top"><h3>Fries</h3><span class="kind">HTB · FULL GUIDE</span></div>
+        <p class="line">A wide Windows surface where identity relationships — not exploits — carry the chain, documented service by service.</p>
+        <div class="demo">
+          <b>What this demonstrates</b>
+          <p>Attack-path mapping: fewer exposed services and tighter relationships shrink the graph.</p>
+          <a class="go" href="https://github.com/allanbkp343-stack/HTB-Machines/blob/main/Fries.md" target="_blank" rel="noopener">Read writeup →</a>
+        </div>
       </div>
-      <div class="item">
-        <div class="name">Pirate <small>WINDOWS · LONG FORM</small></div>
-        <div class="line">The long way round: web doors, credential work, and layered escalation across a full Windows estate.</div>
-        <a class="go" href="https://github.com/allanbkp343-stack/HTB-Machines/blob/main/Pirate.md" target="_blank" rel="noopener">Read →</a>
+      <div class="note">
+        <div class="top"><h3>Pirate</h3><span class="kind">HTB · LONG FORM</span></div>
+        <p class="line">The long way round: web doors, credential work, and layered escalation across a full Windows estate.</p>
+        <div class="demo">
+          <b>What this demonstrates</b>
+          <p>Patience and tiering — persistence across layers, and why credential boundaries matter.</p>
+          <a class="go" href="https://github.com/allanbkp343-stack/HTB-Machines/blob/main/Pirate.md" target="_blank" rel="noopener">Read writeup →</a>
+        </div>
       </div>
     </div>
-    <div class="prose reveal" style="margin-top:26px;">
-      <p class="dim">
-        Twenty-three walkthroughs and counting — retirement-checked, flags redacted, written to be useful.
-        <a href="https://github.com/allanbkp343-stack/HTB-Machines" target="_blank" rel="noopener">Browse the full collection ↗</a>
-      </p>
+    <div class="prose reveal" style="margin-top:24px">
+      <p class="dim">Twenty-three walkthroughs and counting — retirement-checked, flags redacted, written to be useful. <a href="https://github.com/allanbkp343-stack/HTB-Machines" target="_blank" rel="noopener" style="color:var(--accent)">Browse the full collection ↗</a></p>
     </div>
   </div>
 </section>
 
 <section id="method">
   <div class="wrap">
-    <div class="sec-label reveal">04 — Method</div>
-    <h2 class="reveal">How the work gets done.</h2>
-    <div class="method reveal">
-      <div class="step"><div class="n">1</div><div><h3>Scope</h3><p>Agree objectives, constraints, and evidence handling before anything touches a target.</p></div></div>
-      <div class="step"><div class="n">2</div><div><h3>Recon</h3><p>Map services, versions, and the stories the target tells — patiently, because everything else depends on this.</p></div></div>
-      <div class="step"><div class="n">3</div><div><h3>Model</h3><p>Turn observations into hypotheses worth testing: trust boundaries, weak seams, paths that would actually matter.</p></div></div>
-      <div class="step"><div class="n">4</div><div><h3>Validate</h3><p>Test controlled steps and record what fails as carefully as what works. No finding without reproduction.</p></div></div>
-      <div class="step"><div class="n">5</div><div><h3>Escalate</h3><p>Follow the chain with the minimum action necessary — foothold to privilege, user to domain, host to network.</p></div></div>
-      <div class="step"><div class="n">6</div><div><h3>Evidence</h3><p>Preserve provenance: commands, outputs, timestamps, and the decision trail behind every step.</p></div></div>
-      <div class="step"><div class="n">7</div><div><h3>Report</h3><p>Translate findings into impact, root cause, detection opportunities, and remediation that gets acted on.</p></div></div>
-      <div class="step"><div class="n">8</div><div><h3>Retest</h3><p>Verify the fixes. The loop isn't closed until someone checks — and records what remains.</p></div></div>
+    <div class="sec-head reveal">
+      <div class="sec-kicker"><span>04 — METHOD</span><i>// LIFECYCLE</i></div>
+      <h2>Scope the work. Close the loop.</h2>
+      <p class="sec-sub">Select a phase to inspect what goes in, what gets decided, and what comes out.</p>
+    </div>
+    <div class="reveal">
+      <div class="phases" role="tablist" aria-label="Assessment lifecycle">
+        <button class="phase active" data-phase="0" role="tab">01 SCOPE</button>
+        <button class="phase" data-phase="1" role="tab">02 RECON</button>
+        <button class="phase" data-phase="2" role="tab">03 MODEL</button>
+        <button class="phase" data-phase="3" role="tab">04 VALIDATE</button>
+        <button class="phase" data-phase="4" role="tab">05 ESCALATE</button>
+        <button class="phase" data-phase="5" role="tab">06 EVIDENCE</button>
+        <button class="phase" data-phase="6" role="tab">07 REPORT</button>
+        <button class="phase" data-phase="7" role="tab">08 RETEST</button>
+      </div>
+      <div class="phase-panel" role="tabpanel">
+        <h3 id="ph-title">Scope</h3>
+        <p id="ph-body">Agree objectives, constraints, and evidence handling before anything touches a target.</p>
+        <div class="out" id="ph-out">OUTPUT → agreed scope &amp; rules of engagement</div>
+      </div>
+      <div class="flowline">SCOPE → <b>EVIDENCE</b> → ACTION → <b>RETEST</b></div>
     </div>
   </div>
 </section>
 
 <section id="about">
   <div class="wrap">
-    <div class="sec-label reveal">05 — About</div>
-    <h2 class="reveal">A short version of a longer story.</h2>
+    <div class="sec-head reveal">
+      <div class="sec-kicker"><span>05 — OPERATOR</span><i>// PROFILE</i></div>
+      <h2>A short version of a longer story.</h2>
+    </div>
     <div class="about-grid">
       <div class="reveal">
         <div class="prose">
@@ -456,13 +719,10 @@
 
 <section id="contact" class="contact">
   <div class="wrap">
-    <div class="sec-label reveal">06 — Contact</div>
-    <h2 class="reveal">Let's talk about a system.</h2>
-    <div class="prose reveal">
-      <p class="dim">
-        Available for authorized security assessments, purple-team exercises, and security automation
-        work. The fastest way to reach me is through GitHub.
-      </p>
+    <div class="sec-head reveal">
+      <div class="sec-kicker"><span>06 — CONTACT</span><i>// CHANNELS</i></div>
+      <h2>Let's talk about a system.</h2>
+      <p class="sec-sub">Available for authorized security assessments, purple-team exercises, and security automation work. The fastest way to reach me is through GitHub.</p>
     </div>
     <!-- EMAIL: add a mailto link here when a public contact address is available -->
     <a class="btn reveal" href="https://github.com/allanbkp343-stack" target="_blank" rel="noopener">
@@ -488,9 +748,25 @@
 <footer>
   <div class="wrap">
     <span>© 2026 Allan Kimani Wanjiku · Kenya</span>
-    <span class="mono">all security work referenced here is performed under authorization only</span>
+    <span class="mono">AKW / SIG-343 — all security work referenced here is performed under authorization only</span>
   </div>
 </footer>
+
+<!-- operator console -->
+<div id="console" role="dialog" aria-modal="true" aria-label="Operator console">
+  <div class="con-box">
+    <div class="con-head"><span><b>AKW</b> // OPERATOR CONSOLE</span><span>ESC / CLOSE</span></div>
+    <div class="con-body" id="con-body">
+      <div>Welcome, operator.</div>
+      <div class="dim">Type <b>help</b> to list available commands.</div>
+      <div>&nbsp;</div>
+    </div>
+    <div class="con-input-row">
+      <label for="con-input">allan@portfolio:~$</label>
+      <input id="con-input" autocomplete="off" spellcheck="false">
+    </div>
+  </div>
+</div>
 
 <script>
 (function(){
@@ -498,25 +774,50 @@
   var root = document.documentElement;
   var rm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  /* theme: saved → system → dark */
+  /* theme */
   function setTheme(t){ root.setAttribute("data-theme", t); }
   var saved = null; try { saved = localStorage.getItem("akw-theme"); } catch(e){}
   var system = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
   setTheme(saved || system);
-  document.getElementById("theme-toggle").addEventListener("click", function(){
+  function toggleTheme(){
     var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
     setTheme(next);
     try { localStorage.setItem("akw-theme", next); } catch(e){}
-  });
+  }
+  document.getElementById("theme-toggle").addEventListener("click", toggleTheme);
 
-  /* reading progress */
+  /* clock */
+  var clockEl = document.getElementById("clock");
+  function tick(){
+    var d = new Date();
+    var utc = d.getTime() + d.getTimezoneOffset() * 60000;
+    var nbo = new Date(utc + 3 * 3600000);
+    var hh = String(nbo.getHours()).padStart(2,"0");
+    var mm = String(nbo.getMinutes()).padStart(2,"0");
+    clockEl.textContent = "NBO " + hh + ":" + mm;
+  }
+  tick(); setInterval(tick, 30000);
+
+  /* progress */
   var prog = document.getElementById("progress");
   window.addEventListener("scroll", function(){
     var h = document.documentElement, max = h.scrollHeight - h.clientHeight;
     prog.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + "%";
   }, {passive:true});
 
-  /* quiet reveal */
+  /* rotating word */
+  var words = ["offensive security", "purple team", "security automation"];
+  var rot = document.getElementById("rotate");
+  if (!rm){
+    var ri = 0;
+    setInterval(function(){
+      ri = (ri + 1) % words.length;
+      rot.style.opacity = "0";
+      setTimeout(function(){ rot.textContent = words[ri]; rot.style.opacity = "1"; }, 240);
+    }, 2800);
+  }
+
+  /* reveal */
   var els = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && !rm){
     var io = new IntersectionObserver(function(entries){
@@ -526,6 +827,140 @@
   } else {
     els.forEach(function(el){ el.classList.add("in"); });
   }
+
+  /* expandable case study */
+  var btn = document.getElementById("more-btn");
+  var more = document.getElementById("case-more");
+  btn.addEventListener("click", function(){
+    var open = more.classList.toggle("open");
+    btn.setAttribute("aria-expanded", open ? "true" : "false");
+    btn.firstChild.textContent = open ? "Close the case study " : "Read the case study ";
+    if (open) btn.style.marginTop = "26px";
+  });
+
+  /* declassify */
+  var declass = document.getElementById("declass");
+  var dbtn = document.getElementById("declass-btn");
+  dbtn.addEventListener("click", function(){
+    var locked = declass.classList.toggle("locked");
+    dbtn.textContent = locked ? "Declassify" : "Reclassify";
+  });
+
+  /* capability tabs */
+  document.querySelectorAll(".tab").forEach(function(t){
+    t.addEventListener("click", function(){
+      document.querySelectorAll(".tab").forEach(function(x){ x.classList.remove("active"); });
+      document.querySelectorAll(".panel").forEach(function(x){ x.classList.remove("active"); });
+      t.classList.add("active");
+      document.querySelector('.panel[data-panel="' + t.dataset.tab + '"]').classList.add("active");
+    });
+  });
+
+  /* method phases */
+  var phases = [
+    ["Scope","Agree objectives, constraints, and evidence handling before anything touches a target.","OUTPUT → agreed scope & rules of engagement"],
+    ["Recon","Map services, versions, and the stories the target tells — patiently, because everything depends on it.","OUTPUT → attack surface inventory"],
+    ["Model","Turn observations into hypotheses worth testing: trust boundaries, weak seams, paths that would matter.","OUTPUT → prioritised hypothesis list"],
+    ["Validate","Test controlled steps and record what fails as carefully as what works. No finding without reproduction.","OUTPUT → validated attack chains"],
+    ["Escalate","Follow the chain with the minimum action necessary — foothold to privilege, user to domain.","OUTPUT → proof of impact"],
+    ["Evidence","Preserve provenance: commands, outputs, timestamps, and the decision trail behind every step.","OUTPUT → reproducible evidence chain"],
+    ["Report","Translate findings into impact, root cause, detection opportunities, and remediation that gets acted on.","OUTPUT → actionable report"],
+    ["Retest","Verify the fixes. The loop isn't closed until someone checks — and records what remains.","OUTPUT → verified remediation status"]
+  ];
+  var phTitle = document.getElementById("ph-title"),
+      phBody  = document.getElementById("ph-body"),
+      phOut   = document.getElementById("ph-out");
+  document.querySelectorAll(".phase").forEach(function(b){
+    b.addEventListener("click", function(){
+      document.querySelectorAll(".phase").forEach(function(x){ x.classList.remove("active"); });
+      b.classList.add("active");
+      var p = phases[+b.dataset.phase];
+      phTitle.textContent = p[0]; phBody.textContent = p[1]; phOut.textContent = p[2];
+    });
+  });
+
+  /* operator console */
+  var con = document.getElementById("console"),
+      input = document.getElementById("con-input"),
+      body = document.getElementById("con-body");
+  var history = [], hIdx = -1;
+
+  function print(html, cls){
+    var d = document.createElement("div");
+    if (cls) d.className = cls;
+    d.innerHTML = html;
+    body.appendChild(d);
+    body.scrollTop = body.scrollHeight;
+  }
+  function esc(s){ return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
+
+  var cmds = {
+    help: function(){
+      print("available commands:");
+      print("  whoami      identity + role");
+      print("  focus       current focus areas");
+      print("  work        selected work summary");
+      print("  notes       lab writeups repository");
+      print("  method      assessment lifecycle");
+      print("  theme       switch light / dark");
+      print("  contact     get in touch");
+      print("  clear       clear console");
+    },
+    whoami: function(){
+      print("allan — cybersecurity engineer");
+      print("offensive security · purple team · security automation");
+    },
+    focus: function(){
+      print("adversary simulation / identity attack paths / web + api / cloud + containers / automation");
+    },
+    work: function(){
+      print("case 001 — NEMESIS: autonomous purple team platform (private r&d)");
+      print("lab operations — 23 walkthroughs, retired machines only");
+    },
+    notes: function(){
+      print("github.com/allanbkp343-stack/HTB-Machines");
+      print("the path is part of the evidence.");
+    },
+    method: function(){
+      print("scope → recon → model → validate → escalate → evidence → report → retest");
+    },
+    theme: function(){ toggleTheme(); print("theme → " + root.getAttribute("data-theme")); },
+    contact: function(){ print("github.com/allanbkp343-stack"); },
+    banner: function(){
+      print("AKW // SIG-343 — evidence first. scope always. work that compounds.");
+    },
+    clear: function(){ body.innerHTML = ""; }
+  };
+
+  function run(raw){
+    var line = raw.trim();
+    if (!line) return;
+    history.push(line); hIdx = history.length;
+    print('<span class="p">allan@portfolio:~$</span> ' + esc(line));
+    var cmd = line.split(/\s+/)[0].toLowerCase();
+    if (cmds[cmd]) { cmds[cmd](); }
+    else if (cmd === "sudo") { print("authorization required. (lab mode: maybe)"); }
+    else { print('command not found: ' + esc(cmd) + ' — type <b>help</b>', "dim"); }
+    print("&nbsp;");
+  }
+
+  function openConsole(){
+    con.classList.add("open");
+    setTimeout(function(){ input.focus(); }, 30);
+  }
+  function closeConsole(){ con.classList.remove("open"); }
+
+  document.addEventListener("keydown", function(e){
+    if (e.ctrlKey && (e.key === "`" || e.key === "~")){ e.preventDefault(); con.classList.contains("open") ? closeConsole() : openConsole(); }
+    if (e.key === "Escape" && con.classList.contains("open")){ closeConsole(); }
+    if (con.classList.contains("open") && e.key === "ArrowUp" && hIdx > 0){ input.value = history[--hIdx] || ""; }
+    if (con.classList.contains("open") && e.key === "ArrowDown" && hIdx < history.length){ input.value = history[hIdx++] || ""; }
+  });
+  con.addEventListener("click", function(e){ if (e.target === con) closeConsole(); });
+  input.addEventListener("keydown", function(e){
+    if (e.key === "Enter"){ run(input.value); input.value = ""; }
+  });
+  document.getElementById("console-hint").addEventListener("click", openConsole);
 })();
 </script>
 </body>

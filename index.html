@@ -54,13 +54,10 @@
   #progress{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--accent),var(--accent-2));z-index:90;opacity:.9;
     box-shadow:0 0 14px color-mix(in srgb,var(--accent) 65%,transparent)}
 
-  /* gradient text utilities + shimmer */
-  .sec-kicker span,.eyebrow>span:first-child,.stat b,.grad{
-    background:linear-gradient(92deg,var(--accent),var(--accent-2),var(--accent));
-    background-size:200% 100%;
-    -webkit-background-clip:text;background-clip:text;color:transparent;
-    animation:shimmer 7s linear infinite}
-  @keyframes shimmer{from{background-position:0% 0}to{background-position:200% 0}}
+  /* accent typography */
+  .sec-kicker span,.eyebrow>span:first-child{color:var(--accent)}
+  .grad{background:linear-gradient(92deg,var(--accent),var(--accent-2));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
   .mark span{color:var(--accent-2)}
   ::selection{background:color-mix(in srgb,var(--accent) 28%,transparent)}
 
@@ -345,7 +342,7 @@
   .stats{border-top:1px solid var(--line-strong)}
   .stat{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:13px 0;
     border-bottom:1px solid var(--line)}
-  .stat b{font-family:var(--display);font-size:1.35rem;font-weight:420;color:var(--accent)}
+  .stat b{font-family:var(--display);font-size:1.35rem;font-weight:420;color:var(--text)}
   .stat span{color:var(--muted);font-size:.83rem;text-align:right}
 
   /* contact */
@@ -412,8 +409,8 @@
                linear-gradient(160deg,rgba(167,139,250,.6),rgba(232,121,249,.55)) border-box;
     box-shadow:0 30px 90px -55px rgba(167,139,250,.5),0 30px 70px -50px rgba(0,0,0,.75)}
   #work .case .case-top{background:radial-gradient(560px 230px at 6% 0%, rgba(167,139,250,.18), transparent 66%), var(--bg-soft)}
-  .brandn{background:linear-gradient(92deg,#a78bfa,#e879f9,#a78bfa);background-size:200% 100%;
-    -webkit-background-clip:text;background-clip:text;color:transparent;animation:shimmer 7s linear infinite}
+  .brandn{background:linear-gradient(92deg,#a78bfa,#e879f9);
+    -webkit-background-clip:text;background-clip:text;color:transparent}
   #work .case .labels .chip:first-child{color:#c4b5fd;border-color:rgba(167,139,250,.5);background:rgba(167,139,250,.13)}
   #work .case .dropcap::first-letter{color:#a78bfa}
   #work .case .pull::before{background:linear-gradient(180deg,#a78bfa,#e879f9)}
@@ -474,6 +471,36 @@
     .demo-side{display:none}
     .demo-stats{grid-template-columns:1fr 1fr}
   }
+
+  /* ── human pass — single accent, varied rhythm, calmer details ── */
+  .eyebrow{letter-spacing:.14em}
+  .sec-kicker{letter-spacing:.16em}
+  .runline .seq span{letter-spacing:.18em}
+  .eyebrow i{color:var(--faint);opacity:1}
+  .chain .arrow{color:var(--faint)}
+  .runline .seq b{color:var(--faint)}
+  .runline.quote .seq b{color:var(--faint)}
+  .phase-panel .out{color:var(--accent)}
+  .flowline b{color:var(--accent)}
+  .dos-head b{color:var(--accent)}
+  .note .go{color:var(--text);border-bottom:1px solid var(--line-strong);padding-bottom:1px}
+  .note .go:hover{color:var(--accent);text-decoration:none;border-color:var(--accent)}
+  .nav a:hover{color:var(--text)}
+  .nav a::after{background:var(--accent)}
+  .linkrow a:hover{border-color:var(--accent);color:var(--accent)}
+  h1,h2,.statement,.case-top p{text-wrap:balance}
+  #surface{padding:70px 0}
+  #notes{padding:76px 0}
+  #method{padding:62px 0}
+  #about{padding:94px 0}
+  #notes h2,#method h2{font-size:clamp(1.42rem,2.3vw,1.7rem)}
+  #work .case{box-shadow:0 24px 60px -48px rgba(0,0,0,.85)}
+  .demo{box-shadow:0 22px 64px -48px rgba(0,0,0,.9)}
+  .dossier{box-shadow:0 18px 44px -36px rgba(0,0,0,.7)}
+  .tagrow{gap:7px 0}
+  .tagrow .chip{border:0;background:none;padding:0;color:var(--muted);
+    letter-spacing:.04em;text-transform:lowercase;font-size:.7rem}
+  .tagrow .chip:not(:last-child)::after{content:"·";margin:0 12px;color:var(--faint)}
 </style>
 </head>
 <body>
@@ -838,7 +865,7 @@
       </div>
     </div>
     <div class="prose reveal" style="margin-top:24px">
-      <p class="dim">Twenty-three walkthroughs and counting — retirement-checked, flags redacted, written to be useful. <a href="https://github.com/allanbkp343-stack/HTB-Machines" target="_blank" rel="noopener" style="color:var(--accent)">Browse the full collection ↗</a></p>
+      <p class="dim">Twenty-three walkthroughs, retired machines only — most recent: Pirate, Silentium, VariaType, Enigma. Flags redacted. <a href="https://github.com/allanbkp343-stack/HTB-Machines" target="_blank" rel="noopener" style="color:var(--accent)">Browse the full collection ↗</a></p>
     </div>
   </div>
 </section>
@@ -935,7 +962,10 @@
 <footer>
   <div class="wrap">
     <span>© 2026 Allan Kimani Wanjiku · Kenya</span>
-    <span class="mono">AKW / SIG-343 — all security work referenced here is performed under authorization only</span>
+    <span class="mono">hand-built — no framework · v2.3 · october 2026</span>
+  </div>
+  <div class="wrap" style="margin-top:8px;justify-content:flex-start">
+    <span class="mono" style="opacity:.65">all security work referenced here is performed under authorization only</span>
   </div>
 </footer>
 

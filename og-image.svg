@@ -20,7 +20,7 @@
   <line x1="120" y1="196" x2="308" y2="196" stroke="url(#g1)" stroke-width="3"/>
   <text x="120" y="188" font-family="DejaVu Sans,Helvetica,Arial,sans-serif" font-size="21" letter-spacing="6" fill="#34d399">CYBERSECURITY ENGINEER</text>
   <text x="118" y="308" font-family="DejaVu Serif,Georgia,serif" font-size="72" fill="#eef2f8">Allan Kimani Wanjiku</text>
-  <text x="120" y="384" font-family="DejaVu Serif,Georgia,serif" font-style="italic" font-size="30" fill="#a3b2c7">I find weaknesses before adversaries do —</text>
-  <text x="120" y="426" font-family="DejaVu Serif,Georgia,serif" font-style="italic" font-size="30" fill="#a3b2c7">and build the systems that make it repeatable.</text>
+  <text x="120" y="384" font-family="DejaVu Serif,Georgia,serif" font-style="italic" font-size="30" fill="#a3b2c7">I break things on purpose, prove the path, —</text>
+  <text x="120" y="426" font-family="DejaVu Serif,Georgia,serif" font-style="italic" font-size="30" fill="#a3b2c7">and build the systems that remember.</text>
   <text x="120" y="516" font-family="DejaVu Sans Mono,Courier,monospace" font-size="20" fill="#71809a">allanbkp343-stack.github.io · offensive security · purple team · automation</text>
 </svg>

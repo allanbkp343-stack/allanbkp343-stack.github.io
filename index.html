@@ -48,12 +48,12 @@
     --glow-a:rgba(52,211,153,.28); --glow-b:rgba(34,211,238,.24);
   }
   :root[data-theme="light"]{
-    --bg:#f6f9fc; --bg-elev:#ffffff; --bg-soft:#eef4f9;
-    --text:#0f172a; --muted:#51607a; --faint:#8394ad;
-    --line:rgba(15,23,42,.14); --line-strong:rgba(15,23,42,.3);
+    --bg:#fbf8f3; --bg-elev:#ffffff; --bg-soft:#f4efe6;
+    --text:#101828; --muted:#4b5565; --faint:#8a94a6;
+    --line:rgba(16,24,40,.12); --line-strong:rgba(16,24,40,.26);
     --accent:#059669; --accent-2:#0891b2; --accent-ink:#ffffff; --accent-soft:rgba(5,150,105,.1);
-    --grad-ink:#ffffff; --chip:#e8eef6;
-    --glow-a:rgba(52,211,153,.3); --glow-b:rgba(34,211,238,.24);
+    --grad-ink:#ffffff; --chip:#eef4ec;
+    --glow-a:rgba(16,185,129,.3); --glow-b:rgba(6,182,212,.22);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -626,6 +626,78 @@
   .btn.ghost:hover{border-color:var(--accent);color:var(--accent);transform:none;box-shadow:none}
   .btn.ghost::after{display:none}
 
+  /* ── v5 — colour, life, mobile nav ───────────────────── */
+  :root[data-theme="dark"]{
+    --bg:#0a1222; --bg-elev:#111a2e; --bg-soft:#0d1526;
+    --accent-3:#a78bfa; --accent-4:#fbbf24; --accent-5:#f472b6;
+    --glow-c:rgba(167,139,250,.22); --glow-d:rgba(251,191,36,.14);
+  }
+  :root[data-theme="light"]{
+    --bg:#fbfaf6; --bg-elev:#ffffff; --bg-soft:#f4f1e9;
+    --accent-3:#7c3aed; --accent-4:#b45309; --accent-5:#db2777;
+    --glow-c:rgba(124,58,237,.14); --glow-d:rgba(180,83,9,.1);
+  }
+  #progress{background:linear-gradient(90deg,var(--accent),var(--accent-2),var(--accent-3),var(--accent-4))}
+  .hero::before{background:
+    radial-gradient(780px 370px at 10% -12%, var(--glow-a), transparent 66%),
+    radial-gradient(640px 330px at 94% -4%, var(--glow-b), transparent 63%),
+    radial-gradient(560px 320px at 58% 112%, var(--glow-c), transparent 70%),
+    radial-gradient(420px 240px at 78% 30%, var(--glow-d), transparent 72%);
+    background-size:160% 160%,150% 150%,150% 150%,150% 150%;
+    animation:aurora 22s ease-in-out infinite alternate}
+  @keyframes aurora{from{background-position:0% 0,100% 0,50% 100%,80% 40%}to{background-position:32% 22%,68% 16%,40% 60%,60% 20%}}
+
+  /* per-section colour — structure stays, hue changes */
+  #work{--hue:var(--accent-3)} #surface{--hue:var(--accent-2)} #notes{--hue:var(--accent-4)}
+  #method{--hue:var(--accent)} #about{--hue:var(--accent-5)} #contact{--hue:var(--accent-2)}
+  .sec-kicker::before{content:"";width:9px;height:9px;border-radius:2px;align-self:center;
+    background:var(--hue,var(--accent));box-shadow:0 0 14px -2px var(--hue,var(--accent))}
+  .sec-kicker span{color:var(--hue,var(--accent))}
+  .sec-kicker::after{background:linear-gradient(90deg,color-mix(in srgb,var(--hue,var(--accent)) 45%,var(--line-strong)),transparent)}
+  .note:hover{border-color:color-mix(in srgb,var(--hue,var(--accent)) 55%,transparent)}
+  .stats .stat:nth-child(1){border-top:2px solid color-mix(in srgb,var(--accent) 60%,transparent)}
+  .stats .stat:nth-child(2){border-top:2px solid color-mix(in srgb,var(--accent-2) 60%,transparent)}
+  .stats .stat:nth-child(3){border-top:2px solid color-mix(in srgb,var(--accent-4) 60%,transparent)}
+  .stats .stat:nth-child(4){border-top:2px solid color-mix(in srgb,var(--accent-5) 60%,transparent)}
+  .grad-name{background:linear-gradient(92deg,var(--accent),var(--accent-2) 55%,var(--accent-3));
+    -webkit-background-clip:text;background-clip:text;color:transparent}
+  .avail{display:inline-flex;align-items:center;gap:7px;padding:4px 11px;border-radius:999px;
+    font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.6rem;letter-spacing:.14em;
+    color:var(--grad-ink);background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    box-shadow:0 6px 18px -10px color-mix(in srgb,var(--accent) 70%,transparent)}
+  .avail i{width:5px;height:5px;border-radius:50%;background:var(--grad-ink);color:var(--grad-ink)}
+
+  .dossier{position:relative;isolation:isolate}
+  .dossier::before{content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;z-index:-1;
+    background:conic-gradient(135deg,var(--accent),var(--accent-2),var(--accent-3),var(--accent-4),var(--accent));
+    -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+    -webkit-mask-composite:xor;mask-composite:exclude;opacity:.75}
+
+  .pick a:nth-child(1):hover{border-color:color-mix(in srgb,var(--accent-3) 70%,transparent)}
+  .pick a:nth-child(2):hover{border-color:color-mix(in srgb,var(--accent-2) 70%,transparent)}
+  .pick a:nth-child(3):hover{border-color:color-mix(in srgb,var(--accent-4) 70%,transparent)}
+
+  .btn.ghost:hover{color:var(--accent-3);border-color:var(--accent-3)}
+
+  /* mobile / tablet section nav */
+  .mobile-nav{display:none}
+  @media (max-width:1179px){
+    .masthead .nav{display:none}
+    section{scroll-margin-top:112px}
+    .mobile-nav{display:flex;gap:8px;overflow-x:auto;padding:10px 16px;
+      position:sticky;top:57px;z-index:55;
+      background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(12px);
+      border-bottom:1px solid var(--line);scrollbar-width:none;-ms-overflow-style:none}
+    .mobile-nav::-webkit-scrollbar{display:none}
+    .mobile-nav a{flex:0 0 auto;display:inline-flex;align-items:center;gap:7px;padding:7px 13px;
+      border:1px solid var(--line);border-radius:999px;font-size:.78rem;color:var(--muted);
+      background:var(--bg-elev);transition:color .15s ease,border-color .15s ease,background .15s ease}
+    .mobile-nav a .n{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.56rem;color:var(--faint)}
+    .mobile-nav a.active{color:var(--text);border-color:color-mix(in srgb,var(--accent) 60%,transparent);
+      background:color-mix(in srgb,var(--accent) 12%,var(--bg-elev))}
+    .mobile-nav a.active .n{color:var(--accent)}
+  }
+
   /* ── Print — clean, readable, no decoration ───────────── */
   @media print{
     :root{
@@ -635,7 +707,7 @@
     html{scroll-behavior:auto}
     body{background:#fff;color:#111;font-size:11.5pt;line-height:1.55}
     #progress,.skip,.hint,.theme-btn,.masthead .nav,.mast-right,.runline,#console,
-    .side,.glowspot,.hero::before,.hero::after{display:none!important}
+    .side,.mobile-nav,.glowspot,.hero::before,.hero::after{display:none!important}
     .masthead{position:static;border-bottom:1px solid #ccc;background:#fff}
     .mast-inner{padding:0}
     .reveal{opacity:1!important;transform:none!important}
@@ -703,6 +775,15 @@
   </div>
 </header>
 
+<nav class="mobile-nav" aria-label="Sections">
+  <a href="#work"><span class="n">01</span>Work</a>
+  <a href="#surface"><span class="n">02</span>Capabilities</a>
+  <a href="#notes"><span class="n">03</span>Field Notes</a>
+  <a href="#method"><span class="n">04</span>Method</a>
+  <a href="#about"><span class="n">05</span>About</a>
+  <a href="#contact"><span class="n">06</span>Contact</a>
+</nav>
+
 <main id="content" tabindex="-1">
 
 <section class="hero" style="border-bottom:0">
@@ -715,8 +796,9 @@
         <span>CYBERSECURITY ENGINEER</span>
         <span><i>·</i> KENYA <i>·</i> UTC+03:00</span>
         <span><i>·</i> AUTHORIZED WORK ONLY</span>
+        <span class="avail"><i></i>OPEN TO WORK</span>
       </div>
-      <h1>Allan Kimani Wanjiku</h1>
+      <h1>Allan Kimani <span class="grad-name">Wanjiku</span></h1>
       <div class="typed-row" aria-label="Roles">
         <span class="prompt">&gt;</span>
         <span class="typed" id="typed"></span><span class="caret" aria-hidden="true"></span>
@@ -1219,13 +1301,12 @@
 
   /* theme */
   function setTheme(t){ root.setAttribute("data-theme", t); }
-  var saved = null; try { saved = localStorage.getItem("akw-theme"); } catch(e){}
-  var system = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-  setTheme(saved || system);
+  var saved = null; try { saved = localStorage.getItem("akw-theme-v6"); } catch(e){}
+  setTheme(saved || "light");
   function toggleTheme(){
     var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
     setTheme(next);
-    try { localStorage.setItem("akw-theme", next); } catch(e){}
+    try { localStorage.setItem("akw-theme-v6", next); } catch(e){}
   }
   ["theme-toggle","theme-toggle-side"].forEach(function(id){
     var el = document.getElementById(id);
@@ -1525,18 +1606,28 @@
   });
   document.getElementById("console-hint").addEventListener("click", openConsole);
 
-  // nav scrollspy — the current section lights up in the masthead
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav a[href^="#"], .side-nav a[href^="#"]'));
+  // nav scrollspy — deterministic scroll-position version (IO band was unreliable)
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav a[href^="#"], .side-nav a[href^="#"], .mobile-nav a[href^="#"]'));
   var navTargets = navLinks.map(function(a){ return document.getElementById(a.getAttribute("href").slice(1)); });
-  if ("IntersectionObserver" in window){
-    var spy = new IntersectionObserver(function(entries){
-      entries.forEach(function(en){
-        if (!en.isIntersecting) return;
-        navLinks.forEach(function(a, i){ a.classList.toggle("active", navTargets[i] === en.target); });
-      });
-    }, {rootMargin: "-42% 0px -52% 0px"});
-    navTargets.forEach(function(s){ if (s) spy.observe(s); });
+  var spyTick = false;
+  function spyUpdate(){
+    spyTick = false;
+    var probe = window.scrollY + window.innerHeight * 0.35;
+    var best = -1, bestTop = -Infinity;
+    navTargets.forEach(function(t, i){
+      if (!t) return;
+      var top = t.getBoundingClientRect().top + window.scrollY;
+      if (top <= probe && top > bestTop){ bestTop = top; best = i; }
+    });
+    navLinks.forEach(function(a, i){
+      a.classList.toggle("active", best >= 0 && navTargets[i] === navTargets[best]);
+    });
   }
+  function spyQueue(){ if (!spyTick){ spyTick = true; requestAnimationFrame(spyUpdate); } }
+  window.addEventListener("scroll", spyQueue, {passive:true});
+  window.addEventListener("resize", spyQueue);
+  window.addEventListener("load", spyUpdate);
+  spyUpdate();
 })();
 </script>
 </body>

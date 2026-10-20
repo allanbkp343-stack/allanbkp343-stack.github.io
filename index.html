@@ -335,10 +335,10 @@
   .note h3{font-family:var(--display);font-weight:480;font-size:1.16rem}
   .note .kind{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.6rem;letter-spacing:.14em;color:var(--faint);white-space:nowrap}
   .note .line{color:var(--muted);font-size:.9rem;margin-bottom:14px}
-  .note .demo{border-top:1px solid var(--line);padding-top:12px;margin-top:auto;font-size:.84rem}
-  .note .demo b{display:block;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.6rem;
+  .note .note-demo{border-top:1px solid var(--line);padding-top:12px;margin-top:auto;font-size:.84rem}
+  .note .note-demo b{display:block;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.6rem;
     letter-spacing:.15em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}
-  .note .demo p{color:var(--muted);margin-bottom:8px}
+  .note .note-demo p{color:var(--muted);margin-bottom:8px}
   .note .go{font-size:.85rem;color:var(--accent)}
   .note .go:hover{text-decoration:underline}
 
@@ -663,8 +663,11 @@
     -webkit-background-clip:text;background-clip:text;color:transparent}
   .avail{display:inline-flex;align-items:center;gap:7px;padding:4px 11px;border-radius:999px;
     font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.6rem;letter-spacing:.14em;
-    color:var(--grad-ink);background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    color:var(--grad-ink);background:linear-gradient(120deg,var(--accent),var(--accent-2),var(--accent-3),var(--accent-2));
+    background-size:300% 100%;animation:availShift 7s ease-in-out infinite alternate;
     box-shadow:0 6px 18px -10px color-mix(in srgb,var(--accent) 70%,transparent)}
+  @keyframes availShift{from{background-position:0% 50%}to{background-position:100% 50%}}
+  @media (prefers-reduced-motion: reduce){.avail{animation:none}}
   .avail i{width:5px;height:5px;border-radius:50%;background:var(--grad-ink);color:var(--grad-ink)}
 
   .dossier{position:relative;isolation:isolate}
@@ -1111,7 +1114,7 @@
       <div class="note">
         <div class="top"><h3>Paperwork</h3><span class="kind">HTB · FULL GUIDE</span></div>
         <p class="line">A print service becomes a foothold: LPD command injection, PJL file transfer between users, and a Unix-socket daemon that hands out privileged descriptors.</p>
-        <div class="demo">
+        <div class="note-demo">
           <b>What this demonstrates</b>
           <p>Protocol-level injection into legacy workflows — and how quiet pivots compound.</p>
           <a class="go" href="https://github.com/allanbkp343-stack/HTB-Machines/blob/main/Paperwork.md" target="_blank" rel="noopener">Read writeup →</a>
@@ -1120,7 +1123,7 @@
       <div class="note">
         <div class="top"><h3>Cobblestone</h3><span class="kind">HTB · FULL GUIDE</span></div>
         <p class="line">A web path built on disclosed database credentials and cracked hashes — a reminder that disclosure chains quietly until it doesn't.</p>
-        <div class="demo">
+        <div class="note-demo">
           <b>What this demonstrates</b>
           <p>Secret hygiene: where credentials live, how they leak, how far they travel.</p>
           <a class="go" href="https://github.com/allanbkp343-stack/HTB-Machines/blob/main/Cobblestone.md" target="_blank" rel="noopener">Read writeup →</a>
@@ -1129,7 +1132,7 @@
       <div class="note">
         <div class="top"><h3>Fries</h3><span class="kind">HTB · FULL GUIDE</span></div>
         <p class="line">A wide Windows surface where identity relationships — not exploits — carry the chain, documented service by service.</p>
-        <div class="demo">
+        <div class="note-demo">
           <b>What this demonstrates</b>
           <p>Attack-path mapping: fewer exposed services and tighter relationships shrink the graph.</p>
           <a class="go" href="https://github.com/allanbkp343-stack/HTB-Machines/blob/main/Fries.md" target="_blank" rel="noopener">Read writeup →</a>
@@ -1138,7 +1141,7 @@
       <div class="note">
         <div class="top"><h3>Pirate</h3><span class="kind">HTB · LONG FORM</span></div>
         <p class="line">The long way round: web doors, credential work, and layered escalation across a full Windows estate.</p>
-        <div class="demo">
+        <div class="note-demo">
           <b>What this demonstrates</b>
           <p>Patience and tiering — persistence across layers, and why credential boundaries matter.</p>
           <a class="go" href="https://github.com/allanbkp343-stack/HTB-Machines/blob/main/Pirate.md" target="_blank" rel="noopener">Read writeup →</a>
@@ -1262,7 +1265,7 @@
 <footer>
   <div class="wrap">
     <span>© 2026 Allan Kimani Wanjiku · Kenya</span>
-    <span class="mono">hand-built — no framework · v3.0 · october 2026</span>
+    <span class="mono">hand-built — no framework · v6.0 · october 2026</span>
   </div>
   <div class="wrap" style="margin-top:8px;justify-content:flex-start">
     <span class="mono" style="opacity:.65">all security work referenced here is performed under authorization only</span>
@@ -1272,7 +1275,7 @@
       <div><b>Build</b>static HTML · CSS · JS</div>
       <div><b>Type</b>Space Grotesk · Inter · JetBrains Mono</div>
       <div><b>Policy</b>no trackers · no frameworks</div>
-      <div><b>Version</b>v3.0 · oct 2026</div>
+      <div><b>Version</b>v6.0 · oct 2026</div>
     </div>
   </div>
 </footer>

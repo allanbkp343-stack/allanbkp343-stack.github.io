@@ -523,6 +523,57 @@
     letter-spacing:.04em;text-transform:lowercase;font-size:.7rem}
   .tagrow .chip:not(:last-child)::after{content:"·";margin:0 12px;color:var(--faint)}
 
+  /* ── v3 — atmosphere, hero detail, selected work, now ── */
+  body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.05;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    mix-blend-mode:overlay}
+  :root[data-theme="light"] body::after{opacity:.03}
+
+  .hero-grid{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),
+                     linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:72px 72px;
+    -webkit-mask-image:radial-gradient(ellipse 72% 72% at 26% 6%,#000 0%,transparent 74%);
+    mask-image:radial-gradient(ellipse 72% 72% at 26% 6%,#000 0%,transparent 74%)}
+  .hero-rail{position:absolute;right:20px;top:130px;bottom:60px;z-index:2;display:flex;align-items:center;
+    writing-mode:vertical-rl;font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.58rem;
+    letter-spacing:.36em;text-transform:uppercase;color:var(--faint);pointer-events:none;user-select:none}
+  .hero-rail b{color:var(--accent);font-weight:500}
+  @media (max-width:1200px){.hero-rail{display:none}}
+
+  .pick-wrap{padding-top:58px}
+  .pick{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .pick a{padding:20px 20px 18px;border:1px solid var(--line);border-radius:12px;background:var(--bg-elev);
+    transition:border-color .18s ease,transform .18s ease,box-shadow .18s ease;display:block}
+  .pick a:hover{border-color:color-mix(in srgb,var(--accent) 65%,transparent);transform:translateY(-2px);
+    box-shadow:0 20px 44px -34px color-mix(in srgb,var(--accent) 55%,transparent)}
+  .pick .pk{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.6rem;letter-spacing:.2em;
+    text-transform:uppercase;color:var(--faint)}
+  .pick h3{font-family:var(--display);font-size:1.06rem;font-weight:500;margin:8px 0 6px}
+  .pick p{color:var(--muted);font-size:.86rem;line-height:1.55;margin-bottom:12px}
+  .pick .arrow{color:var(--accent);font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.74rem;letter-spacing:.06em}
+  @media (max-width:900px){.pick{grid-template-columns:1fr}}
+
+  .now-card{margin-top:6px;border:1px solid var(--line);border-radius:14px;background:var(--bg-elev);
+    padding:22px 24px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:start}
+  .now-card .tag{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:.62rem;letter-spacing:.22em;
+    text-transform:uppercase;color:var(--accent);white-space:nowrap;padding-top:4px}
+  .now-list{display:grid;gap:11px;font-size:.92rem;color:var(--muted)}
+  .now-list b{color:var(--text);font-weight:500}
+  .now-list .when{color:var(--faint);font-family:"JetBrains Mono",ui-monospace,monospace;
+    font-size:.66rem;letter-spacing:.08em;margin-left:6px;white-space:nowrap}
+  @media (max-width:700px){.now-card{grid-template-columns:1fr;gap:12px}}
+
+  .nav a.active{color:var(--text)}
+  .nav a.active::after{width:100%}
+
+  .colophon{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 22px;margin-top:22px;
+    padding-top:18px;border-top:1px solid var(--line)}
+  .colophon div{font-size:.7rem;color:var(--faint);font-family:"JetBrains Mono",ui-monospace,monospace;letter-spacing:.04em}
+  .colophon b{display:block;color:var(--muted);font-weight:500;letter-spacing:.14em;text-transform:uppercase;
+    font-size:.58rem;margin-bottom:4px}
+  @media (max-width:760px){.colophon{grid-template-columns:1fr 1fr}}
+
   /* ── Print — clean, readable, no decoration ───────────── */
   @media print{
     :root{
@@ -578,6 +629,8 @@
 
 <section class="hero" style="border-bottom:0">
   <div class="glowspot" aria-hidden="true"></div>
+  <div class="hero-grid" aria-hidden="true"></div>
+  <div class="hero-rail" aria-hidden="true">SIG-343 · EVIDENCE FIRST · SCOPE ALWAYS · <b>OPEN TO AUTHORIZED WORK</b></div>
   <div class="wrap hero-inner">
     <div>
       <div class="eyebrow">
@@ -632,6 +685,29 @@
     <div class="seq">
       <span>Offensive Security</span><b>·</b><span>Purple Team</span><b>·</b><span>Security Automation</span><b>·</b><span>Active Directory</span><b>·</b><span>Cloud &amp; Containers</span><b>·</b><span>Knowledge Systems</span><b>·</b><span>Evidence First</span><b>·</b><span>Scope Always</span><b>·</b>
     </div>
+  </div>
+</div>
+
+<div class="wrap pick-wrap">
+  <div class="pick reveal">
+    <a href="#work">
+      <span class="pk">PLATFORM</span>
+      <h3>NEMESIS</h3>
+      <p>Private multi-agent purple-team orchestrator — scope to report, evidence-gated at every step.</p>
+      <span class="arrow">Read the case study ↗</span>
+    </a>
+    <a href="https://github.com/allanbkp343-stack/HTB-Machines" target="_blank" rel="noopener">
+      <span class="pk">WRITING</span>
+      <h3>HTB Machines</h3>
+      <p>23 evidence-first walkthroughs: the path that worked, the branches that didn't, the defender's takeaway.</p>
+      <span class="arrow">Browse the archive ↗</span>
+    </a>
+    <a href="https://github.com/allanbkp343-stack" target="_blank" rel="noopener">
+      <span class="pk">PRACTICE</span>
+      <h3>Open work</h3>
+      <p>Lab builds, CTF ranges, and tooling notes — published when they're proven, not when they're pretty.</p>
+      <span class="arrow">GitHub ↗</span>
+    </a>
   </div>
 </div>
 
@@ -976,6 +1052,19 @@
   </div>
 </section>
 
+<section id="now">
+  <div class="wrap">
+    <div class="now-card reveal">
+      <div class="tag">NOW / 2026</div>
+      <div class="now-list">
+        <div><b>Building</b> — NEMESIS: multi-agent assessment orchestration, evidence-sealed by default.<span class="when">ongoing</span></div>
+        <div><b>Publishing</b> — HTB walkthroughs, retired boxes only, flags redacted.<span class="when">last update: oct 2026</span></div>
+        <div><b>Open to</b> — authorized pentests, purple-team exercises, and automation builds.<span class="when">remote · KE</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="contact" class="contact">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -1007,10 +1096,18 @@
 <footer>
   <div class="wrap">
     <span>© 2026 Allan Kimani Wanjiku · Kenya</span>
-    <span class="mono">hand-built — no framework · v2.3 · october 2026</span>
+    <span class="mono">hand-built — no framework · v3.0 · october 2026</span>
   </div>
   <div class="wrap" style="margin-top:8px;justify-content:flex-start">
     <span class="mono" style="opacity:.65">all security work referenced here is performed under authorization only</span>
+  </div>
+  <div class="wrap">
+    <div class="colophon">
+      <div><b>Build</b>static HTML · CSS · JS</div>
+      <div><b>Type</b>Space Grotesk · Inter · JetBrains Mono</div>
+      <div><b>Policy</b>no trackers · no frameworks</div>
+      <div><b>Version</b>v3.0 · oct 2026</div>
+    </div>
   </div>
 </footer>
 
@@ -1340,6 +1437,19 @@
     if (e.key === "Enter"){ run(input.value); input.value = ""; }
   });
   document.getElementById("console-hint").addEventListener("click", openConsole);
+
+  // nav scrollspy — the current section lights up in the masthead
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('.nav a[href^="#"]'));
+  var navTargets = navLinks.map(function(a){ return document.getElementById(a.getAttribute("href").slice(1)); });
+  if ("IntersectionObserver" in window){
+    var spy = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if (!en.isIntersecting) return;
+        navLinks.forEach(function(a, i){ a.classList.toggle("active", navTargets[i] === en.target); });
+      });
+    }, {rootMargin: "-42% 0px -52% 0px"});
+    navTargets.forEach(function(s){ if (s) spy.observe(s); });
+  }
 })();
 </script>
 </body>

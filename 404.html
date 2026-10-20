@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>404 — Route not found · Allan Kimani Wanjiku</title>
+<meta name="description" content="That page does not exist.">
+<meta name="robots" content="noindex,follow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<style>
+  :root{--bg:#0a101e;--text:#f2f6fc;--muted:#b3c1d6;--faint:#7e8ea8;--line:rgba(170,190,220,.17);--accent:#34d399;--accent-2:#22d3ee}
+  @media (prefers-color-scheme: light){
+    :root{--bg:#f6f9fc;--text:#0f172a;--muted:#51607a;--faint:#8394ad;--line:rgba(15,23,42,.14);--accent:#059669;--accent-2:#0891b2}
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{min-height:100vh;display:grid;place-items:center;background:var(--bg);color:var(--text);
+    font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;padding:28px}
+  main{max-width:560px}
+  .mono{font-family:ui-monospace,"JetBrains Mono",monospace}
+  .code{font-size:clamp(3.4rem,10vw,5.4rem);font-weight:600;line-height:1;
+    background:linear-gradient(92deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  h1{font-size:clamp(1.35rem,3.4vw,1.9rem);margin:14px 0 10px;letter-spacing:-.01em}
+  p{color:var(--muted);line-height:1.7;margin-bottom:22px}
+  a.btn{display:inline-flex;align-items:center;gap:8px;padding:11px 20px;border-radius:8px;
+    background:linear-gradient(135deg,var(--accent),var(--accent-2));color:#04150f;font-weight:600;text-decoration:none;font-size:.92rem}
+  a.btn:hover{filter:brightness(1.06)}
+  .hint{display:block;margin-top:18px;font-size:.72rem;color:var(--faint);letter-spacing:.06em}
+</style>
+</head>
+<body>
+<main>
+  <div class="code mono">404</div>
+  <h1>That route doesn't resolve.</h1>
+  <p>The page you asked for isn't here — a dead link, a renamed file, or a path that was never real. The main page still works.</p>
+  <a class="btn" href="/">Back to the main page <span aria-hidden="true">→</span></a>
+  <span class="hint mono">// SIG-343 · nothing to see here</span>
+</main>
+</body>
+</html>

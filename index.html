@@ -15,8 +15,24 @@
 <meta property="og:image" content="https://allanbkp343-stack.github.io/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Allan Kimani Wanjiku — Cybersecurity Engineer. Offensive security, purple team, security automation.">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://allanbkp343-stack.github.io/og-image.png">
+<meta name="twitter:image:alt" content="Allan Kimani Wanjiku — Cybersecurity Engineer. Offensive security, purple team, security automation.">
+<meta name="twitter:title" content="Allan Kimani Wanjiku — Cybersecurity Engineer">
+<meta name="twitter:description" content="Offensive security · Purple team · Security automation. Evidence-first assessments that compound.">
+<meta name="robots" content="index,follow,max-image-preview:large">
+<meta name="theme-color" content="#0a101e" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#f6f9fc" media="(prefers-color-scheme: light)">
+<meta property="og:site_name" content="Allan Kimani Wanjiku">
+<meta property="og:locale" content="en_KE">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Person","@id":"https://allanbkp343-stack.github.io/#person","name":"Allan Kimani Wanjiku","jobTitle":"Cybersecurity Engineer","description":"Cybersecurity engineer in Kenya working across offensive security, purple-team operations, and the automation that connects them.","url":"https://allanbkp343-stack.github.io/","image":"https://allanbkp343-stack.github.io/og-image.png","address":{"@type":"PostalAddress","addressCountry":"KE","addressLocality":"Nairobi"},"sameAs":["https://github.com/allanbkp343-stack","https://github.com/allanbkp343-stack/HTB-Machines"],"knowsAbout":["Penetration Testing","Active Directory Security","Purple Team Operations","Security Automation","Web Application Security","Cloud Security","Detection Engineering"]},
+{"@type":"WebSite","@id":"https://allanbkp343-stack.github.io/#website","url":"https://allanbkp343-stack.github.io/","name":"Allan Kimani Wanjiku — Cybersecurity Engineer","publisher":{"@id":"https://allanbkp343-stack.github.io/#person"},"inLanguage":"en"}
+]}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -47,6 +63,11 @@
     transition:background .25s ease,color .25s ease;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
   a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:3px}
+  .skip{position:fixed;left:16px;top:-72px;z-index:200;background:var(--bg-elev);color:var(--text);
+    border:1px solid var(--line-strong);border-radius:6px;padding:10px 16px;font-size:.85rem;
+    transition:top .18s ease}
+  .skip:focus{top:14px}
+  #console-hint{background:none;border:0;padding:0;text-align:left}
   ::selection{background:var(--accent-soft)}
   .wrap{max-width:1100px;margin:0 auto;padding:0 30px}
   .mono{font-family:"JetBrains Mono",ui-monospace,monospace}
@@ -501,15 +522,39 @@
   .tagrow .chip{border:0;background:none;padding:0;color:var(--muted);
     letter-spacing:.04em;text-transform:lowercase;font-size:.7rem}
   .tagrow .chip:not(:last-child)::after{content:"·";margin:0 12px;color:var(--faint)}
+
+  /* ── Print — clean, readable, no decoration ───────────── */
+  @media print{
+    :root{
+      --bg:#fff;--bg-elev:#fff;--bg-soft:#fff;--text:#111;--muted:#333;--faint:#555;
+      --line:#d8d8d8;--line-strong:#999;--accent:#0b6b4f;--accent-2:#0b6b4f;--accent-ink:#fff;--accent-soft:#eee
+    }
+    html{scroll-behavior:auto}
+    body{background:#fff;color:#111;font-size:11.5pt;line-height:1.55}
+    #progress,.skip,.hint,.theme-btn,.masthead .nav,.mast-right,.runline,#console,
+    .glowspot,.hero::before,.hero::after{display:none!important}
+    .masthead{position:static;border-bottom:1px solid #ccc;background:#fff}
+    .mast-inner{padding:0}
+    .reveal{opacity:1!important;transform:none!important}
+    .wrap{max-width:100%;padding:0 6mm}
+    section{padding:16px 0!important;break-inside:avoid}
+    .hero{padding:24px 0!important}
+    h1,h2,h3{color:#000}
+    .grad{-webkit-text-fill-color:#0b6b4f;color:#0b6b4f;background:none}
+    .case,.note,.dossier,.demo,.stat{background:#fff!important;border-color:#ccc!important;box-shadow:none!important}
+    a[href^="http"]::after{content:" (" attr(href) ")";font-size:8.5pt;color:#444}
+  }
 </style>
 </head>
 <body>
+
+<a class="skip" href="#content">Skip to content</a>
 
 <div id="progress" aria-hidden="true"></div>
 
 <header class="masthead">
   <div class="mast-inner">
-    <a class="mark" href="#top"><b>Allan Kimani Wanjiku</b><span>.</span></a>
+    <a class="mark" href="#content"><b>Allan Kimani Wanjiku</b><span>.</span></a>
     <nav class="nav" aria-label="Sections">
       <a href="#work">Work</a>
       <a href="#surface">Capabilities</a>
@@ -529,7 +574,7 @@
   </div>
 </header>
 
-<main id="top">
+<main id="content" tabindex="-1">
 
 <section class="hero" style="border-bottom:0">
   <div class="glowspot" aria-hidden="true"></div>
@@ -560,7 +605,7 @@
         <a href="https://github.com/allanbkp343-stack/HTB-Machines" target="_blank" rel="noopener">HTB Machines ↗</a>
         <a href="#contact">Get in touch</a>
       </div>
-      <div class="hint" id="console-hint">Press <kbd>CTRL</kbd> + <kbd>`</kbd> for operator console</div>
+      <button type="button" class="hint" id="console-hint" aria-haspopup="dialog">Press <kbd>CTRL</kbd> + <kbd>`</kbd> for operator console</button>
     </div>
 
     <aside class="dossier" aria-label="Profile summary">

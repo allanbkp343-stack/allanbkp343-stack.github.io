@@ -12,6 +12,8 @@ favicon.svg     — site icon
 og-image.png    — social preview (Open Graph / Twitter)
 robots.txt      — crawler policy
 sitemap.xml     — sitemap
+404.html        — not-found page (styled)
+apple-touch-icon.png — iOS home-screen icon
 ```
 
 ## Deploy
